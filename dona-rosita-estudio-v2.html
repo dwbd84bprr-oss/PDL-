@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doña Rosita la soltera · Guía de estudio (Actos I–II)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --background:201 100% 13%;
+  --bg-2:201 70% 9%;
+  --foreground:0 0% 100%;
+  --muted-foreground:240 4% 66%;
+  --font-display:'Instrument Serif',serif;
+  --font-body:'Inter',sans-serif;
+  --ok:152 62% 48%; --no:351 90% 66%;
+  --suj:190 85% 62%; --pred:38 96% 62%; --od:340 88% 70%; --oi:265 85% 74%;
+  --circ:150 62% 58%; --nx:205 95% 72%; --neu:240 6% 75%;
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:hsl(var(--background));color:hsl(var(--foreground));
+  font-family:var(--font-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.disp{font-family:var(--font-display);font-weight:400;letter-spacing:-.5px;line-height:1.02}
+a{color:inherit}
+::selection{background:hsl(var(--foreground)/.22)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.muted{color:hsl(var(--muted-foreground))}
+
+/* liquid glass */
+.liquid-glass{background:rgba(255,255,255,.01);background-blend-mode:luminosity;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:none;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.1);position:relative;overflow:hidden}
+.liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;
+  background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.15) 80%,rgba(255,255,255,.45) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.glass{background:hsl(var(--foreground)/.045);border:1px solid hsl(var(--foreground)/.12);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);
+  background:hsl(var(--bg-2)/.55);border-bottom:1px solid hsl(var(--foreground)/.08)}
+.nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px}
+.logo{font-family:var(--font-display);font-size:26px;letter-spacing:-.5px;white-space:nowrap}
+.logo sup{font-size:11px;opacity:.7}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{font-size:13.5px;color:hsl(var(--muted-foreground));text-decoration:none;
+  padding:7px 11px;border-radius:999px;transition:color .25s,background .25s;white-space:nowrap}
+.nav-links a:hover{color:hsl(var(--foreground))}
+.nav-links a.active{color:hsl(var(--foreground));background:hsl(var(--foreground)/.08)}
+
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-0:0;z-index:0}
+.hero .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,hsl(var(--bg-2)/.25),hsl(var(--background)/.55) 70%,hsl(var(--background)) 100%)}
+.hero-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:90px 24px 110px}
+.hero h1{font-size:clamp(46px,10vw,104px);max-width:14ch;margin:0;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero h1 em{font-style:italic;color:hsl(var(--muted-foreground))}
+.hero .sub{color:hsl(var(--foreground)/.92);font-size:clamp(15px,2.3vw,19px);max-width:46ch;margin-top:26px;line-height:1.55;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.hero .verse{font-family:var(--font-display);font-style:italic;font-size:clamp(17px,2.6vw,23px);
+  color:hsl(var(--foreground)/.9);margin-top:30px;line-height:1.4;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.cta{display:inline-block;font-family:var(--font-body);font-size:15px;color:hsl(var(--foreground));
+  text-decoration:none;border-radius:999px;padding:15px 42px;margin-top:38px;cursor:pointer;
+  transition:transform .25s var(--ease)}
+.cta:hover{transform:scale(1.03)}
+.cta.sm{padding:10px 22px;font-size:13.5px;margin:0}
+
+/* sections */
+section{padding:70px 0;border-top:1px solid hsl(var(--foreground)/.08)}
+.eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:hsl(var(--muted-foreground))}
+.eyebrow .n{font-family:var(--font-display);font-size:15px;color:hsl(var(--foreground));margin-right:8px;letter-spacing:0}
+h2{font-size:clamp(30px,5.4vw,52px);margin:.18em 0 .3em}
+h2 em{font-style:italic;color:hsl(var(--muted-foreground))}
+h3{font-size:23px;margin:0 0 6px}
+.lead{color:hsl(var(--foreground)/.85);max-width:66ch;margin:0 0 30px;font-size:16.5px}
+p{margin:0 0 14px}
+.card{padding:22px 24px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:780px){.g2,.g3{grid-template-columns:1fr}}
+.tag{display:inline-block;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;background:hsl(var(--foreground)/.08);border:1px solid hsl(var(--foreground)/.14);margin-bottom:12px}
+
+/* acts */
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:780px){.acts{grid-template-columns:1fr}}
+.act h3{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.act .when{font-family:var(--font-body);font-size:12px;color:hsl(var(--background));font-weight:600;
+  background:hsl(var(--foreground)/.9);padding:3px 10px;border-radius:999px}
+.beats{list-style:none;margin:14px 0 0;padding:0}
+.beats li{position:relative;padding:0 0 13px 20px;color:hsl(var(--foreground)/.85);font-size:14.5px}
+.beats li::before{content:"";position:absolute;left:1px;top:8px;width:8px;height:8px;border-radius:50%;
+  border:1.5px solid hsl(var(--foreground)/.7)}
+.beats li:not(:last-child)::after{content:"";position:absolute;left:4.5px;top:15px;bottom:0;width:1px;background:hsl(var(--foreground)/.18)}
+.beats b{color:hsl(var(--foreground))}
+
+/* people */
+.people{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(max-width:560px){.people{grid-template-columns:1fr}}
+.person{display:flex;gap:12px;padding:12px 14px;border:1px solid hsl(var(--foreground)/.1);border-radius:13px;background:hsl(var(--foreground)/.03)}
+.person .ini{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  font-family:var(--font-display);font-size:18px;background:hsl(var(--foreground)/.08);border:1px solid hsl(var(--foreground)/.14)}
+.person .nm{font-weight:600;font-size:14.5px;margin:0}
+.person .ds{font-size:12.5px;color:hsl(var(--muted-foreground));margin:1px 0 0;line-height:1.42}
+
+/* quote */
+.quote{font-family:var(--font-display);font-style:italic;font-size:19px;line-height:1.4;
+  color:hsl(var(--foreground));background:hsl(var(--foreground)/.05);border-left:2px solid hsl(var(--foreground)/.5);
+  padding:13px 17px;border-radius:0 12px 12px 0;margin:12px 0}
+.quote cite{display:block;font-family:var(--font-body);font-style:normal;font-size:12px;color:hsl(var(--muted-foreground));margin-top:7px;font-weight:500}
+
+/* poem */
+.poem{font-family:var(--font-display);font-size:clamp(18px,2.6vw,22px);line-height:1.5;color:hsl(var(--foreground)/.92);margin:0;white-space:pre-line}
+.poem-note{font-size:12.5px;color:hsl(var(--muted-foreground));letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+
+/* mini-tables for poem analysis */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px}
+@media(max-width:560px){.facts{grid-template-columns:1fr}}
+.fact{border:1px solid hsl(var(--foreground)/.1);border-radius:12px;padding:13px 15px;background:hsl(var(--foreground)/.03)}
+.fact .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--muted-foreground))}
+.fact .v{font-size:14px;margin-top:4px;color:hsl(var(--foreground)/.9)}
+.fact .v b{color:hsl(var(--foreground))}
+
+/* day arc */
+.arc{display:flex;gap:10px;margin:18px 0}
+.arc .ph{flex:1;border-radius:14px;padding:14px;text-align:center;border:1px solid hsl(var(--foreground)/.12)}
+.arc .dot{width:34px;height:34px;border-radius:50%;margin:0 auto 8px;box-shadow:0 0 24px 2px rgba(0,0,0,.2)}
+.arc .ph h4{font-family:var(--font-display);font-size:18px;margin:0 0 2px}
+.arc .ph p{font-size:12.5px;color:hsl(var(--muted-foreground));margin:0}
+@media(max-width:560px){.arc{flex-direction:column}}
+
+/* rasgos */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pills button{font-size:13.5px;color:hsl(var(--foreground)/.8);padding:8px 14px;border-radius:999px;
+  border:1px solid hsl(var(--foreground)/.16);background:hsl(var(--foreground)/.03);cursor:pointer;
+  transition:transform .14s var(--ease),background .2s,color .2s}
+.pills button:active{transform:scale(.97)}
+.pills button.on{color:hsl(var(--background));background:hsl(var(--foreground)/.92);border-color:transparent}
+.rcard{display:none}.rcard.show{display:block;animation:fade .4s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* accordion (preguntas) */
+.acc-tabs{display:flex;gap:6px;margin-bottom:16px}
+.acc-tabs button{font-size:14px;color:hsl(var(--muted-foreground));padding:8px 18px;border-radius:999px;
+  border:1px solid hsl(var(--foreground)/.16);background:hsl(var(--foreground)/.03);cursor:pointer;transition:transform .14s var(--ease),background .2s,color .2s}
+.acc-tabs button:active{transform:scale(.97)}
+.acc-tabs button.on{color:hsl(var(--background));background:hsl(var(--foreground)/.92);border-color:transparent}
+.acc-pane{display:none}.acc-pane.on{display:block}
+.acc{border:1px solid hsl(var(--foreground)/.1);border-radius:14px;margin-bottom:10px;overflow:hidden;background:hsl(var(--foreground)/.03)}
+.acc-h{display:flex;gap:12px;align-items:flex-start;padding:15px 17px;cursor:pointer;transition:background .2s}
+.acc-h:hover{background:hsl(var(--foreground)/.04)}
+.acc-h .qn{font-family:var(--font-display);font-size:18px;color:hsl(var(--foreground)/.85);flex:none;min-width:34px}
+.acc-h .qt{font-weight:500;font-size:15px}
+.acc-h .car{margin-left:auto;color:hsl(var(--muted-foreground));transition:transform .25s var(--ease);flex:none}
+.acc.open .car{transform:rotate(90deg)}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.acc.open .acc-b{max-height:1400px}
+.acc-b-in{padding:0 17px 17px;color:hsl(var(--foreground)/.84);font-size:14.5px}
+.acc-b-in p{margin:0 0 10px}
+.acc-b-in .cit{font-family:var(--font-display);font-style:italic;color:hsl(var(--foreground));font-size:15.5px}
+
+/* glossary */
+.glos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:860px){.glos{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.glos{grid-template-columns:1fr}}
+.gitem{border:1px solid hsl(var(--foreground)/.1);border-radius:12px;padding:13px 15px;background:hsl(var(--foreground)/.03)}
+.gitem .ab{display:inline-block;font-family:var(--font-body);font-weight:700;font-size:12px;padding:3px 8px;border-radius:7px;margin-bottom:6px;color:hsl(var(--background))}
+.gitem .nm{font-weight:600;font-size:14px}
+.gitem .df{font-size:12.8px;color:hsl(var(--muted-foreground));margin-top:3px;line-height:1.45}
+.gcat{font-family:var(--font-display);font-size:21px;margin:22px 0 10px;color:hsl(var(--foreground)/.92)}
+
+/* coordination types */
+.types{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:680px){.types{grid-template-columns:1fr}}
+.type{border:1px solid hsl(var(--foreground)/.1);border-radius:14px;overflow:hidden;background:hsl(var(--foreground)/.03)}
+.type-h{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:14px 16px;cursor:pointer;
+  font-family:var(--font-display);font-size:19px;transition:background .2s}
+.type-h:hover{background:hsl(var(--foreground)/.04)}
+.type-h .nx{font-family:var(--font-body);font-size:11.5px;color:hsl(var(--muted-foreground))}
+.type-h .car{color:hsl(var(--muted-foreground));transition:transform .25s var(--ease)}
+.type.open .car{transform:rotate(90deg)}
+.type-b{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.type.open .type-b{max-height:320px}
+.type-b-in{padding:0 16px 16px}
+.type-b .desc{font-size:13.5px;color:hsl(var(--foreground)/.8);margin:0 0 10px}
+.cajas{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}
+.cj{flex:1 1 170px;border:1px solid hsl(var(--foreground)/.16);border-radius:10px;padding:9px 11px;background:hsl(var(--foreground)/.03)}
+.cj .l{font-family:var(--font-body);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--nx));display:block;margin-bottom:3px}
+.cj .t{font-size:14px}
+.cjn{align-self:center;font-family:var(--font-display);font-size:18px;color:hsl(var(--background));background:hsl(var(--foreground)/.92);padding:6px 13px;border-radius:10px}
+
+/* ANALYZER */
+.az-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.az-seg{display:inline-flex;border:1px solid hsl(var(--foreground)/.16);border-radius:999px;overflow:hidden}
+.az-seg button{font-family:var(--font-body);font-size:13px;color:hsl(var(--muted-foreground));padding:8px 16px;background:transparent;border:none;cursor:pointer;transition:color .2s,background .2s}
+.az-seg button.on{color:hsl(var(--background));background:hsl(var(--foreground)/.92)}
+.az-btn{font-family:var(--font-body);font-size:13.5px;font-weight:600;color:hsl(var(--foreground));
+  border:1px solid hsl(var(--foreground)/.18);background:hsl(var(--foreground)/.05);border-radius:999px;padding:9px 18px;cursor:pointer;transition:transform .14s var(--ease),background .2s}
+.az-btn:active{transform:scale(.97)}.az-btn:hover{background:hsl(var(--foreground)/.1)}
+.az-hint{font-size:12.5px;color:hsl(var(--muted-foreground));margin:0 0 10px}
+.az-canvas{min-height:64px;padding:16px 14px 8px;border:1px dashed hsl(var(--foreground)/.2);border-radius:14px;
+  background:hsl(var(--foreground)/.02);line-height:3;user-select:none;-webkit-user-select:none;touch-action:none}
+.aw{display:inline-block;padding:3px 6px;margin:1px;border-radius:6px;cursor:pointer;font-size:15.5px;transition:background .12s}
+.aw:hover{background:hsl(var(--foreground)/.1)}
+.aw.sel{background:hsl(var(--nx)/.4);color:#fff}
+.cbox{display:inline-block;border:1.5px solid hsl(var(--cat,var(--neu))/.85);border-radius:9px;
+  padding:15px 5px 5px;margin:11px 3px 4px;position:relative;vertical-align:top;background:hsl(var(--cat,var(--neu))/.06)}
+.cbox>.lab{position:absolute;top:-10px;left:7px;font-family:var(--font-body);font-weight:700;font-size:9.5px;
+  letter-spacing:.06em;text-transform:uppercase;color:hsl(var(--background));background:hsl(var(--cat,var(--neu)));
+  padding:1px 6px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.cbox>.lab:hover{filter:brightness(1.12)}
+.cbox.ro>.lab{cursor:default}
+.palette{margin-top:12px;border:1px solid hsl(var(--foreground)/.12);border-radius:14px;padding:12px 14px;background:hsl(var(--foreground)/.04);display:none}
+.palette.show{display:block;animation:fade .25s var(--ease)}
+.palette .sel-info{font-size:12.5px;color:hsl(var(--muted-foreground));margin:0 0 9px}
+.pgroup{margin-bottom:8px}
+.pgroup .gl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin-right:6px}
+.plab{font-family:var(--font-body);font-weight:600;font-size:12.5px;color:hsl(var(--background));
+  border:none;border-radius:7px;padding:5px 10px;margin:2px;cursor:pointer;transition:transform .12s var(--ease),filter .2s}
+.plab:active{transform:scale(.95)}.plab:hover{filter:brightness(1.1)}
+.az-sol{margin-top:14px;display:none}.az-sol.show{display:block;animation:fade .3s var(--ease)}
+.az-sol .sol-cap{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--ok));margin:0 0 8px}
+.az-sol .canvas-ro{padding:16px 14px 8px;border:1px solid hsl(var(--ok)/.4);border-radius:14px;background:hsl(var(--ok)/.05);line-height:3}
+
+/* tabs (verbs) */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{font-size:14px;color:hsl(var(--muted-foreground));padding:9px 18px;border-radius:999px;
+  border:1px solid hsl(var(--foreground)/.16);background:hsl(var(--foreground)/.03);cursor:pointer;transition:transform .14s var(--ease),color .2s,background .2s}
+.tabs button:active{transform:scale(.97)}
+.tabs button.on{color:hsl(var(--background));background:hsl(var(--foreground)/.92);border-color:transparent}
+.tab-pane{display:none}.tab-pane.on{display:block;animation:fade .35s var(--ease)}
+.mood-desc{color:hsl(var(--foreground)/.82);margin:0 0 14px;max-width:66ch}
+.subtabs{display:flex;gap:6px;margin:0 0 12px}
+.subtabs button{font-size:12.5px;color:hsl(var(--muted-foreground));padding:6px 12px;border-radius:999px;
+  border:1px solid hsl(var(--foreground)/.12);background:transparent;cursor:pointer}
+.subtabs button.on{color:hsl(var(--foreground));background:hsl(var(--foreground)/.08)}
+.conj{display:grid;gap:14px}
+.cb .ct{font-family:var(--font-display);font-size:18px;color:hsl(var(--foreground)/.92);margin:0 0 4px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+.ctbl td{padding:6px 10px;border-bottom:1px solid hsl(var(--foreground)/.08)}
+.ctbl td:first-child{font-weight:600;color:hsl(var(--muted-foreground));white-space:nowrap;width:34%}
+.callout{display:flex;gap:12px;margin-top:14px;padding:13px 15px;border-radius:13px;background:hsl(var(--foreground)/.05);border:1px solid hsl(var(--foreground)/.12)}
+.callout .k{font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--nx));flex:none}
+.callout div{font-size:14px;color:hsl(var(--foreground)/.82)}
+.callout em{font-family:var(--font-display);font-style:italic;font-size:16px;color:hsl(var(--foreground))}
+
+/* verb analyzer chips */
+.vchips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.vchip{font-size:14px;cursor:pointer;padding:8px 13px;border-radius:10px;font-weight:500;
+  border:1px solid hsl(var(--foreground)/.16);background:hsl(var(--foreground)/.03);transition:transform .14s var(--ease),background .2s}
+.vchip:active{transform:scale(.96)}.vchip:hover{background:hsl(var(--foreground)/.08)}
+.vchip.on{background:hsl(var(--foreground)/.92);color:hsl(var(--background));border-color:transparent}
+.vout{margin-top:14px;min-height:64px;display:flex;flex-wrap:wrap;gap:10px}
+.vbox{flex:1 1 120px;border:1px solid hsl(var(--foreground)/.1);border-radius:11px;padding:10px 12px;background:hsl(var(--foreground)/.03);animation:fade .3s var(--ease)}
+.vbox .l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:hsl(var(--muted-foreground))}
+.vbox .v{font-family:var(--font-display);font-size:18px;margin-top:2px}
+
+/* verboides */
+.verboides{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+@media(max-width:680px){.verboides{grid-template-columns:1fr}}
+.vd{border:1px solid hsl(var(--foreground)/.1);border-radius:13px;padding:15px 16px;background:hsl(var(--foreground)/.03)}
+.vd h4{font-family:var(--font-display);font-size:20px;margin:0 0 3px}
+.vd .end{font-size:12px;color:hsl(var(--nx));font-weight:600;letter-spacing:.04em}
+.vd p{font-size:13px;color:hsl(var(--muted-foreground));margin:8px 0 0}
+.vd .ex{font-family:var(--font-display);font-style:italic;font-size:15px;color:hsl(var(--foreground));margin-top:6px}
+
+/* quiz */
+.quiz-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.quiz-tabs button{font-size:13.5px;color:hsl(var(--muted-foreground));padding:8px 15px;border-radius:999px;
+  border:1px solid hsl(var(--foreground)/.16);background:hsl(var(--foreground)/.03);cursor:pointer;transition:transform .14s var(--ease),color .2s,background .2s}
+.quiz-tabs button:active{transform:scale(.97)}
+.quiz-tabs button.on{color:hsl(var(--background));background:hsl(var(--foreground)/.92);border-color:transparent}
+.scorebar{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.scorebar .track{flex:1;height:8px;border-radius:99px;background:hsl(var(--foreground)/.1);overflow:hidden}
+.scorebar .fill{height:100%;width:0;background:hsl(var(--foreground)/.85);border-radius:99px;transition:width .5s var(--ease)}
+.scorebar .pct{font-family:var(--font-display);font-size:17px;min-width:104px;text-align:right;color:hsl(var(--foreground)/.85)}
+.q{border:1px solid hsl(var(--foreground)/.1);border-radius:14px;padding:16px 18px;margin-bottom:12px;background:hsl(var(--foreground)/.03)}
+.q .qn{font-weight:600;font-size:15.5px;margin:0 0 4px}
+.q .qn b{font-family:var(--font-display);font-weight:400;margin-right:4px}
+.q .cita{font-family:var(--font-display);font-style:italic;font-size:16px;color:hsl(var(--foreground)/.8);margin:2px 0 10px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;text-align:left;font-family:var(--font-body);font-weight:500;font-size:14.5px;color:hsl(var(--foreground));
+  padding:11px 14px;border-radius:11px;border:1px solid hsl(var(--foreground)/.16);background:hsl(var(--foreground)/.03);cursor:pointer;
+  transition:transform .12s var(--ease),background .2s,border-color .2s}
+.opt:active{transform:scale(.99)}
+.opt:hover:not(.locked){background:hsl(var(--foreground)/.07)}
+.opt .mk{flex:none;width:22px;height:22px;border-radius:7px;border:1px solid hsl(var(--foreground)/.2);display:grid;place-items:center;font-family:var(--font-display);font-size:14px}
+.opt.correct{background:hsl(var(--ok)/.16);border-color:hsl(var(--ok)/.55)}
+.opt.correct .mk{background:hsl(var(--ok));color:#04231a;border-color:transparent}
+.opt.wrong{background:hsl(var(--no)/.14);border-color:hsl(var(--no)/.5)}
+.opt.wrong .mk{background:hsl(var(--no));color:#2a0710;border-color:transparent}
+.opt.locked{cursor:default}
+.exp{margin-top:10px;font-size:13.5px;color:hsl(var(--foreground)/.85);padding:10px 13px;border-radius:11px;background:hsl(var(--foreground)/.05);border:1px solid hsl(var(--foreground)/.12);display:none}
+.exp.show{display:block;animation:fade .3s var(--ease)}
+.exp b{color:hsl(var(--foreground))}
+.q-reset{font-size:13px;font-weight:600;color:hsl(var(--foreground)/.85);background:transparent;border:1px solid hsl(var(--foreground)/.18);border-radius:999px;padding:9px 16px;cursor:pointer;margin-top:6px;transition:transform .14s var(--ease),background .2s}
+.q-reset:active{transform:scale(.97)}.q-reset:hover{background:hsl(var(--foreground)/.06)}
+.done{font-family:var(--font-display);font-style:italic;font-size:17px;color:hsl(var(--ok));margin-top:10px;display:none}
+.done.show{display:block;animation:fade .3s var(--ease)}
+
+footer{border-top:1px solid hsl(var(--foreground)/.08);padding:40px 0 70px;color:hsl(var(--muted-foreground));font-size:13px}
+footer .ft{font-family:var(--font-display);font-size:24px;color:hsl(var(--foreground));margin:0 0 8px}
+
+/* shader hero background */
+.shader-bg{position:absolute;inset:0;z-index:0;background:hsl(var(--background));overflow:hidden}
+.shader-bg canvas{display:block;width:100%!important;height:100%!important}
+
+/* pretéritos timeline + drill */
+.ptl{position:relative;display:flex;justify-content:space-between;gap:6px;margin:20px 0 18px;padding-top:4px}
+.ptl::before{content:"";position:absolute;left:5%;right:5%;top:13px;height:2px;background:hsl(var(--foreground)/.18)}
+.pends{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin:-6px 2px 14px}
+.pn{position:relative;z-index:1;flex:1;text-align:center;cursor:pointer;background:none;border:none;padding:0}
+.pdot{width:18px;height:18px;border-radius:50%;margin:0 auto 9px;background:hsl(var(--bg-2));border:2px solid hsl(var(--foreground)/.35);
+  transition:transform .2s var(--ease),box-shadow .25s,background .25s,border-color .25s}
+.pn:hover .pdot{border-color:hsl(var(--foreground)/.7)}
+.pn .pnn{font-size:11px;font-weight:600;color:hsl(var(--muted-foreground));line-height:1.22}
+.pn.sel .pnn{color:hsl(var(--foreground))}
+.pn.lit .pdot{background:hsl(var(--ok));border-color:hsl(var(--ok));box-shadow:0 0 0 6px hsl(var(--ok)/.18);transform:scale(1.18)}
+.pn.lit .pnn{color:hsl(var(--foreground))}
+.pinfo{font-size:13.5px;color:hsl(var(--foreground)/.84);background:hsl(var(--foreground)/.05);border:1px solid hsl(var(--foreground)/.12);border-radius:12px;padding:12px 15px;margin-bottom:16px}
+.pinfo b{color:hsl(var(--foreground))}
+.pform{font-family:var(--font-display);font-size:clamp(30px,6vw,46px);text-align:center;margin:6px 0 4px;color:hsl(var(--foreground))}
+.pq{text-align:center;font-size:13px;color:hsl(var(--muted-foreground));margin:0 0 14px}
+.pdrill-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.pscore{font-family:var(--font-display);font-size:17px;color:hsl(var(--foreground)/.85)}
+.pnext{font-size:13.5px;font-weight:600;color:hsl(var(--foreground));border:1px solid hsl(var(--foreground)/.18);background:hsl(var(--foreground)/.05);border-radius:999px;padding:9px 20px;cursor:pointer;transition:transform .14s var(--ease),background .2s;display:none}
+.pnext.show{display:inline-block}.pnext:active{transform:scale(.97)}.pnext:hover{background:hsl(var(--foreground)/.1)}
+
+/* scroll-reveal 3D card */
+.scroll-anim{display:flex;align-items:center;justify-content:center;position:relative;padding:0 14px}
+.cscroll{height:58rem;width:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.cscroll-inner{width:100%;position:relative;perspective:1000px;padding:30px 0}
+.cs-header{max-width:64rem;margin:0 auto;text-align:center;will-change:transform}
+.cs-header h2{margin:.1em 0 0}
+.cs-card{max-width:64rem;margin:-2.5rem auto 0;height:40rem;width:100%;border:4px solid #44566a;border-radius:30px;padding:16px;
+  background:#11202d;transform-style:preserve-3d;will-change:transform;
+  box-shadow:0 0 #0000004d,0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a,0 233px 65px #00000003}
+.cs-card-inner{height:100%;width:100%;overflow:hidden;border-radius:18px;background:hsl(var(--bg-2));display:flex;align-items:center;justify-content:center;position:relative}
+.cs-panel{text-align:center;padding:24px}
+.cs-eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin:0 0 22px}
+.cs-orb{width:120px;height:120px;border-radius:50%;margin:0 auto 22px;background:radial-gradient(circle at 36% 32%,#fff,#ff3b6b 45%,#7a0f2e 96%);box-shadow:0 0 50px 8px rgba(255,59,107,.35);animation:csMut 13s ease-in-out infinite}
+@keyframes csMut{0%,100%{background:radial-gradient(circle at 36% 32%,#fff,#ff3b6b 45%,#7a0f2e 96%);box-shadow:0 0 50px 8px rgba(255,59,107,.35)}
+45%{background:radial-gradient(circle at 36% 32%,#fff,#fdeef3 55%,#d9bcc8 96%);box-shadow:0 0 50px 8px rgba(253,238,243,.28)}
+80%{background:radial-gradient(circle at 36% 32%,#e7d6e6,#9a7fae 55%,#2a1b3a 96%);box-shadow:0 0 44px 6px rgba(155,107,255,.26)}}
+.cs-verse{font-family:var(--font-display);font-style:italic;font-size:clamp(18px,3vw,26px);color:hsl(var(--foreground)/.92);max-width:34ch;margin:0 auto;line-height:1.4}
+.cs-phases{display:flex;gap:18px;justify-content:center;margin-top:22px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:hsl(var(--muted-foreground))}
+.cs-phases span:nth-child(1){color:#ff5c7a}.cs-phases span:nth-child(3){color:#b79bd6}
+@media(max-width:768px){.cscroll{height:40rem}.cs-card{height:26rem;padding:8px;border-radius:22px;margin-top:-1.5rem}.cs-orb{width:84px;height:84px;margin-bottom:16px}}
+:focus-visible{outline:2px solid hsl(var(--nx));outline-offset:3px;border-radius:6px}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@keyframes fade-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.fr{animation:fade-rise .9s ease-out both}
+.fr1{animation:fade-rise .9s ease-out .18s both}
+.fr2{animation:fade-rise .9s ease-out .36s both}
+.fr3{animation:fade-rise .9s ease-out .54s both}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}.reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="logo">Rosita<sup>®</sup></div>
+    <div class="nav-links">
+      <a href="#obra" class="active">La obra</a>
+      <a href="#rosa">Rosa mutabile</a>
+      <a href="#rasgos">Rasgos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#sintaxis">Sintaxis</a>
+      <a href="#analizador">Analizador</a>
+      <a href="#verbos">Verbos</a>
+      <a href="#practica">Práctica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div id="shaderHero" class="shader-bg"></div>
+  <div class="veil"></div>
+  <div class="hero-content">
+    <h1 class="fr">Doña Rosita <em>la soltera</em></h1>
+    <p class="sub fr1">Guía de estudio interactiva — Actos&nbsp;I y&nbsp;II · Federico García Lorca · <em>El lenguaje de las flores</em>.</p>
+    <p class="verse fr2">«Cuando se abre en la mañana, roja como sangre está…<br>se pone blanca… en la raya de lo oscuro, se comienza a deshojar.»</p>
+    <a class="cta liquid-glass fr3" href="#obra">Comenzar el repaso</a>
+  </div>
+</header>
+
+<!-- SCROLL-REVEAL 3D CARD -->
+<div class="scroll-anim">
+  <div class="cscroll" id="cscroll">
+    <div class="cscroll-inner">
+      <div class="cs-header" id="csHeader">
+        <p class="cs-eyebrow">Desplazá para verlo</p>
+        <h2>Un poema dividido en <em>varios jardines</em></h2>
+      </div>
+      <div class="cs-card" id="csCard">
+        <div class="cs-card-inner">
+          <div class="cs-panel">
+            <p class="cs-eyebrow">El lenguaje de las flores</p>
+            <div class="cs-orb"></div>
+            <p class="cs-verse">«…roja como sangre está… se pone blanca… se comienza a deshojar.»</p>
+            <div class="cs-phases"><span>mañana</span><span>tarde</span><span>noche</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 LA OBRA -->
+<section id="obra">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">01</span>Conocimiento y comprensión</p>
+    <h2 class="reveal">La obra de un <em>vistazo</em></h2>
+    <p class="lead reveal"><em>Poema granadino del novecientos, dividido en varios jardines, con escenas de canto y baile.</em> Una obra sobre la <b>espera</b>, el <b>paso del tiempo</b> y la situación de la <b>mujer soltera</b> en la Granada de comienzos del siglo&nbsp;XX. Su símbolo rector es la <b>rosa mutabile</b>.</p>
+
+    <div class="acts reveal">
+      <article class="act glass card">
+        <h3>Acto&nbsp;I <span class="when">El compromiso</span></h3>
+        <p class="muted" style="font-size:13.5px;margin:6px 0 0">«Habitación con salida a un invernadero.»</p>
+        <ul class="beats">
+          <li>El <b>Tío</b>, botánico, presenta su joya: la <b>rosa mutabile</b>, «roja por la mañana, a la tarde se pone blanca, y se deshoja por la noche».</li>
+          <li><b>Rosita</b> entra y sale rápido, llena de prisa: «todo lo quiere volando».</li>
+          <li>El <b>Sobrino</b> debe partir a <b>Tucumán</b>; promete volver: «yo quiero que Rosita me espere. Porque volveré pronto».</li>
+          <li>Contraste de ámbitos: el hombre, libre «por el mar»; la mujer, sola «en estas cuatro paredes».</li>
+          <li>Despedida lírica en el <b>vis-à-vis</b>: poemas de amor y juramento de reencuentro.</li>
+        </ul>
+      </article>
+      <article class="act glass card">
+        <h3>Acto&nbsp;II <span class="when">Quince años después</span></h3>
+        <p class="muted" style="font-size:13.5px;margin:6px 0 0">«Salón de la casa de doña Rosita. Al fondo el jardín.»</p>
+        <ul class="beats">
+          <li>Pasaron <b>quince años</b> y Rosita <b>sigue esperando</b>.</li>
+          <li>Visita el <b>Señor X</b> (Economía): defiende el progreso del siglo «materialista» y <b>choca con el Tío</b> (naturaleza y calma).</li>
+          <li>Discusión <b>Ama–Tía</b> sobre quién quiere más a Rosita; cae el <b>portatermómetro</b> y se reconcilian.</li>
+          <li>Visitan las <b>Solteronas «cursilonas»</b> (aparentan lujo) y las <b>Ayolas</b> (jóvenes, quieren casarse).</li>
+          <li><b>Final:</b> la carta del novio anuncia boda <b>por poderes</b>; el Tío corta la rosa, «todavía roja».</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="glass card reveal" style="margin-top:16px">
+      <span class="tag">Personajes · Actos I–II</span>
+      <div class="people">
+        <div class="person"><div class="ini">R</div><div><p class="nm">Rosita</p><p class="ds">Protagonista. Comprometida con su primo, lo espera durante años.</p></div></div>
+        <div class="person"><div class="ini">T</div><div><p class="nm">El Tío</p><p class="ds">Botánico de las rosas. Naturaleza, calma y saber tradicional.</p></div></div>
+        <div class="person"><div class="ini">T</div><div><p class="nm">La Tía</p><p class="ds">Cría a Rosita. Pragmática y lúcida sobre la realidad.</p></div></div>
+        <div class="person"><div class="ini">A</div><div><p class="nm">El Ama</p><p class="ds">Criada y figura maternal. Refranes, supersticiones y enorme cariño.</p></div></div>
+        <div class="person"><div class="ini">S</div><div><p class="nm">El Sobrino / Primo</p><p class="ds">El novio. Parte a Tucumán; promete volver (Acto I).</p></div></div>
+        <div class="person"><div class="ini">X</div><div><p class="nm">El Señor X</p><p class="ds">Catedrático de Economía. El progreso del nuevo siglo (Acto II).</p></div></div>
+        <div class="person"><div class="ini">S</div><div><p class="nm">Solteronas + Madre</p><p class="ds">«Cursilonas»: aparentan estatus pese a la pobreza (Acto II).</p></div></div>
+        <div class="person"><div class="ini">A</div><div><p class="nm">Las Ayolas</p><p class="ds">Hijas del fotógrafo. Jóvenes y descaradas; quieren casarse (Acto II).</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ROSA MUTABILE -->
+<section id="rosa">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">02</span>El símbolo rector</p>
+    <h2 class="reveal">La <em>rosa mutabile</em></h2>
+    <p class="lead reveal">El poema que el Tío recita es el corazón simbólico de la obra. La flor que en un solo día pasa de roja a blanca y se deshoja es la <b>vida de Rosita</b>: juventud, madurez y decadencia consumidas en la espera.</p>
+
+    <div class="grid g2 reveal">
+      <div class="glass card">
+        <p class="poem-note">Poema · «Rosa mutabile»</p>
+        <p class="poem">Cuando se abre en la mañana,
+roja como sangre está.
+El rocío no la toca
+porque se teme quemar.
+Abierta en el medio día
+es dura como el coral.
+El sol se asoma a los vidrios
+para verla relumbrar.
+…se pone blanca, con blanco
+de una mejilla de sal.
+Y cuando toca la noche
+blando cuerno de metal…
+en la raya de lo oscuro,
+se comienza a deshojar.</p>
+      </div>
+      <div class="glass card">
+        <span class="tag">Análisis del poema</span>
+        <div class="arc">
+          <div class="ph"><div class="dot" style="background:radial-gradient(circle at 35% 30%,#fff,hsl(var(--od)) 60%,#7a0f2e)"></div><h4>Mañana</h4><p>Roja como sangre · juventud y pasión</p></div>
+          <div class="ph"><div class="dot" style="background:radial-gradient(circle at 35% 30%,#fff,#f3e8ee 60%,#cdb6c2)"></div><h4>Tarde</h4><p>Blanca de sal · madurez, palidez</p></div>
+          <div class="ph"><div class="dot" style="background:radial-gradient(circle at 35% 30%,#cdb6c2,#7a6a85 60%,#241830)"></div><h4>Noche</h4><p>Se deshoja · vejez y soledad</p></div>
+        </div>
+        <div class="facts">
+          <div class="fact"><div class="k">Estructura</div><div class="v">Tres momentos del día (mañana · mediodía · tarde-noche) = un <b>ciclo vital</b> completo.</div></div>
+          <div class="fact"><div class="k">Métrica</div><div class="v">Versos <b>octosílabos</b> (arte menor), propios de la lírica popular y del romance.</div></div>
+          <div class="fact"><div class="k">Rima</div><div class="v"><b>Romance:</b> rima asonante en <b>á</b> en los versos pares (está, coral, sal, deshojar…); impares sueltos.</div></div>
+          <div class="fact"><div class="k">Recursos</div><div class="v"><b>Personificación</b> (el rocío «se teme quemar», el sol «se asoma»), <b>símil</b> («roja como sangre», «dura como el coral»), <b>antítesis</b> (roja/blanca) y <b>simbolismo del color</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass card reveal" style="margin-top:16px">
+      <span class="tag">¿Dónde aparece y por qué importa?</span>
+      <ul class="beats">
+        <li><b>Acto I — el Tío lo presenta</b> al mostrar la rosa: instala el símbolo y anuncia que la flor «dura un día tan solo».</li>
+        <li><b>Acto I — Rosita lo recita sola</b>, justo tras despedir al primo: su vida queda equiparada al ciclo de la flor. Empieza «roja» (enamorada) y el lector ya intuye que se «deshojará».</li>
+        <li><b>Acto II — vuelve fragmentado</b> en el poema colectivo «Lo que dicen las flores» y al final, cuando el Tío corta la rosa «todavía roja»: «todavía tiene la brasa de su juventud».</li>
+        <li><b>Relación con la protagonista:</b> Rosita <i>es</i> la rosa mutabile. Su nombre, su vestido rosa y su destino —florecer y marchitarse sin ser «cortada» (casada) a tiempo— repiten el poema. El subtítulo, <i>El lenguaje de las flores</i>, lo confirma.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 RASGOS -->
+<section id="rasgos">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">03</span>Análisis de rasgos literarios</p>
+    <h2 class="reveal">Recursos <em>literarios</em></h2>
+    <p class="lead reveal">Tocá cada recurso para ver una <b>cita de la obra</b> (Actos I–II) y su análisis.</p>
+    <div class="pills reveal" id="pills"></div>
+    <div class="glass card reveal" id="rpanel" style="min-height:170px"></div>
+  </div>
+</section>
+
+<!-- 04 PREGUNTAS GUÍA -->
+<section id="preguntas">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">04</span>Preguntas guía resueltas</p>
+    <h2 class="reveal">Preguntas <em>guía</em></h2>
+    <p class="lead reveal">Respuestas modelo con citas, organizadas por acto. Tocá cada pregunta para desplegarla. En las citas que piden página, completá el número según tu edición: <i>dos puntos + comillas + (pág. ___)</i>.</p>
+    <div class="acc-tabs reveal">
+      <button class="on" data-p="a1">Acto I</button>
+      <button data-p="a2">Acto II</button>
+    </div>
+    <div class="acc-pane on" id="paneA1"></div>
+    <div class="acc-pane" id="paneA2"></div>
+  </div>
+</section>
+
+<!-- 05 SINTAXIS -->
+<section id="sintaxis">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">05</span>Sintaxis</p>
+    <h2 class="reveal">Elementos de la oración <em>bimembre y compuesta</em></h2>
+    <p class="lead reveal">Resumen de cada elemento, con su abreviatura, a partir del manual. La <b>oración bimembre</b> tiene sujeto y predicado; la <b>compuesta</b> reúne dos o más proposiciones de igual jerarquía (por <b>yuxtaposición</b> o <b>coordinación</b>).</p>
+
+    <div class="reveal" id="glossary"></div>
+
+    <h3 class="gcat reveal" style="margin-top:30px">Tipos de coordinación</h3>
+    <div class="types reveal" id="types"></div>
+  </div>
+</section>
+
+<!-- 06 ANALIZADOR -->
+<section id="analizador">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">06</span>Práctica de análisis</p>
+    <h2 class="reveal">Analizador <em>en cajas</em></h2>
+    <p class="lead reveal">Generá una oración, <b>arrastrá sobre las palabras</b> para seleccionarlas y elegí la función: se crea una caja. Podés anidar cajas (función dentro de sujeto/predicado) y tocar la etiqueta de una caja para quitarla. Después, comprobá con «Mostrar análisis sugerido».</p>
+
+    <div class="glass card reveal">
+      <div class="az-bar">
+        <div class="az-seg" id="azKind">
+          <button class="on" data-k="simple">Bimembre (simple)</button>
+          <button data-k="compound">Compuesta</button>
+        </div>
+        <button class="az-btn" id="azGen">↻ Generar oración</button>
+        <button class="az-btn" id="azClear">Limpiar cajas</button>
+        <button class="az-btn" id="azSol">Mostrar análisis sugerido</button>
+      </div>
+      <p class="az-hint">Mantené apretado y arrastrá sobre dos o más palabras (o tocá una sola). Soltá y elegí la etiqueta.</p>
+      <div class="az-canvas" id="azCanvas"></div>
+      <div class="palette" id="azPalette"></div>
+      <div class="az-sol" id="azSolWrap">
+        <p class="sol-cap">Análisis sugerido</p>
+        <div class="canvas-ro" id="azSolCanvas"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 VERBOS -->
+<section id="verbos">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">07</span>Morfología verbal</p>
+    <h2 class="reveal">Tiempos, modos y <em>verboides</em></h2>
+    <p class="lead reveal">Tres modos: <b>indicativo</b> (lo real), <b>subjuntivo</b> (lo posible, deseado, hipotético) e <b>imperativo</b> (la orden). Paradigma regular con los modelos <em>amar · temer · partir</em>.</p>
+
+    <div class="tabs reveal" id="moodTabs"></div>
+    <div class="glass card reveal" id="moodPanes"></div>
+
+    <div class="glass card reveal" style="margin-top:18px">
+      <span class="tag">Verboides · formas no personales</span>
+      <p style="font-size:14px;color:hsl(var(--foreground)/.82);margin:0 0 4px">No se conjugan (no tienen persona ni número propios). Funcionan como otras clases de palabras.</p>
+      <div class="verboides">
+        <div class="vd"><h4>Infinitivo</h4><span class="end">-ar · -er · -ir</span><p>Funciona como sustantivo.</p><p class="ex">amar · temer · partir</p></div>
+        <div class="vd"><h4>Participio</h4><span class="end">-ado · -ido (irreg. -to/-cho/-so)</span><p>Funciona como adjetivo.</p><p class="ex">amado · temido · partido · abierto · roto · dicho</p></div>
+        <div class="vd"><h4>Gerundio</h4><span class="end">-ando · -iendo</span><p>Funciona como adverbio.</p><p class="ex">amando · temiendo · partiendo</p></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><span class="k">Ejemplos</span><div>Abrimos → <em>abrir / abierto / abriendo</em> · Salieron → <em>salir / salido / saliendo</em> · Rompió → <em>romper / roto / rompiendo</em>.</div></div>
+    </div>
+
+    <div class="glass card reveal" style="margin-top:18px">
+      <span class="tag">Analizador de verbos</span>
+      <p style="font-size:14px;color:hsl(var(--foreground)/.82);margin:0 0 2px">Tocá un verbo y mirá su análisis: <b>persona · número · tiempo · modo</b>.</p>
+      <div class="vchips" id="vchips"></div>
+      <div class="vout" id="vout"><p class="muted" style="font-size:14px">Elegí un verbo arriba para analizarlo…</p></div>
+    </div>
+
+    <div class="glass card reveal" id="preteritos" style="margin-top:18px">
+      <span class="tag">Pretéritos · práctica visual</span>
+      <p style="font-size:14px;color:hsl(var(--foreground)/.82);margin:0 0 2px">Tocá un punto de la línea de tiempo para repasar cada pretérito; después resolvé el ejercicio.</p>
+      <div class="ptl" id="ptl"></div>
+      <div class="pends"><span>← antes · pasado lejano</span><span>presente →</span></div>
+      <div class="pinfo" id="pInfo">Tocá un pretérito de la línea para ver su uso y un ejemplo.</div>
+      <div class="pdrill-head"><div class="pscore" id="pScore">0 / 0</div><div class="muted" style="font-size:12.5px" id="pProg"></div></div>
+      <p class="pform" id="pForm"></p>
+      <p class="pq">¿Qué pretérito es esta forma?</p>
+      <div class="opts" id="pOpts"></div>
+      <div class="exp" id="pExp"></div>
+      <div style="text-align:center;margin-top:12px"><button class="pnext" id="pNext">Siguiente →</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 PRÁCTICA -->
+<section id="practica">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">08</span>Preguntas para practicar</p>
+    <h2 class="reveal">Práctica con <em>corrección</em></h2>
+    <p class="lead reveal">Cuatro bloques. Elegí una respuesta y se corrige al instante, con explicación. <b>Solo hasta el Acto&nbsp;II.</b></p>
+    <div class="quiz-tabs reveal" id="quizTabs"></div>
+    <div class="scorebar reveal">
+      <div class="track"><div class="fill" id="scoreFill"></div></div>
+      <div class="pct" id="scorePct">0 / 0</div>
+    </div>
+    <div id="quizMount" class="reveal"></div>
+    <button class="q-reset" id="quizReset">↺ Reiniciar este bloque</button>
+    <p class="done" id="quizDone"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="ft">Doña Rosita la soltera · Actos I–II</p>
+    <p style="margin:0">Guía armada a partir del texto de Lorca, las preguntas guía y tus apuntes. Para repasar — no reemplaza la lectura de la obra.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=(s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelectorAll(s)];
+
+/* ============ RASGOS ============ */
+const RASGOS=[
+ {d:"Símbolo: rosa mutabile",cita:"Cuando se abre en la mañana, / roja como sangre está… se pone blanca… en la raya de lo oscuro, / se comienza a deshojar.",src:"El Tío · Acto I",an:"Roja al alba, blanca a la tarde, deshojada de noche: <b>símbolo de la vida de Rosita</b>. Al final del Acto II el Tío corta la rosa «todavía roja»: «todavía tiene la brasa de su juventud»."},
+ {d:"El lenguaje de las flores",cita:"Las amarillas son odio; / el furor, las encarnadas; / las blancas son casamiento / y las azules, mortaja.",src:"«Lo que dicen las flores» · Acto II",an:"Cada flor codifica un sentimiento: da título a la obra y vuelve el jardín un <b>sistema de símbolos</b>. La mezcla casamiento/mortaja anticipa el destino de Rosita."},
+ {d:"Metáfora",cita:"De tanto vivir juntas, los encajes se os hacen espinas.",src:"El Tío · Acto II",an:"Lo delicado (<b>encajes</b>) se vuelve hiriente (<b>espinas</b>): metáfora de la relación Tía–Ama tras años de convivencia. También: «la flor de la manteca» y «tendrá el pelo de plata»."},
+ {d:"Antítesis",cita:"luz y sombra, noche y día, / sólo pensaré en quererte.",src:"El Primo · Acto I",an:"Términos <b>contrarios</b> enfrentados (luz/sombra, noche/día) para expresar la totalidad del amor."},
+ {d:"Campo semántico de la muerte",cita:"el veneno que vierte / amor, sobre el alma sola, / tejerá con tierra y ola / el vestido de mi muerte.",src:"Rosita · Acto I",an:"Veneno, alma sola, tierra, ola, muerte: anticipan la <b>«muerte en vida»</b> de Rosita como soltera."},
+ {d:"Personificación",cita:"El sol se asoma a los vidrios / para verla relumbrar.",src:"Poema de la rosa",an:"La naturaleza realiza acciones humanas (el sol «se asoma», el rocío «se teme quemar», la tarde «se desmaya»): envuelve la rosa en un mundo sensible."},
+ {d:"Acotaciones escénicas",cita:"ROSITA. (Entra rápida. Viene vestida de rosa con un traje del novecientos, mangas de jamón…)",src:"Acotación · Acto I",an:"Lorca caracteriza con las acotaciones: el vestido <b>rosa</b> identifica a Rosita con la flor; el saber botánico del autor se vuelca en el Tío."},
+ {d:"Lenguaje popular / refranes",cita:"Ni padre, ni madre, ni perrito que le ladre… Del coro al caño y del caño al coro.",src:"El Ama · Acto I",an:"Refranes y frases populares marcan el origen humilde del Ama y su <b>cercanía afectiva</b> con la familia; dan contrapunto cómico al lirismo."}
+];
+const pills=$("#pills"),rpanel=$("#rpanel");
+RASGOS.forEach((r,i)=>{
+ const b=document.createElement("button");b.textContent=r.d;if(!i)b.classList.add("on");
+ b.onclick=()=>{$$("#pills button").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+   rpanel.innerHTML=`<span class="tag">${r.d}</span><div class="quote">«${r.cita}»<cite>${r.src}</cite></div><p style="color:hsl(var(--foreground)/.85);margin:6px 0 0">${r.an}</p>`;};
+ pills.appendChild(b);
+});
+$$("#pills button")[0].click();
+
+/* ============ PREGUNTAS GUÍA ============ */
+const QA={
+ a1:[
+  {q:"2",t:"Pares de personajes contrastados (con citas y pág.)",h:
+   `<p><b>El Tío ↔ el Ama.</b> El Tío idealiza las flores como arte y ciencia; el Ama prefiere lo útil y comestible. <br>El Tío: <span class="cit">«Es necesario que cuidéis las flores»</span> (pág. ___). <br>El Ama: <span class="cit">«A mí las flores me huelen a niño muerto… Donde esté una naranja o un buen membrillo, que se quiten las rosas del mundo»</span> (pág. ___).</p>
+   <p><b>El Sobrino (hombre) ↔ Rosita (mujer).</b> Destinos opuestos según el género. <br>La Tía: <span class="cit">«mi niña se queda sola en estas cuatro paredes, y tú te vas libre por el mar, por aquellos ríos, por aquellos bosques de toronjas»</span> (pág. ___). El hombre = libertad y movimiento; la mujer = encierro y espera.</p>
+   <p><b>La Tía ↔ el Ama (opcional).</b> Ambas maternales, pero la Tía reprime (<span class="cit">«¡Silencio!»</span>) mientras el Ama se desborda en llanto y maldiciones.</p>
+   <p class="muted" style="font-size:12.5px">Formato: dos puntos + comillas + (pág. X). Completá el número con tu edición.</p>`},
+  {q:"3",t:"Análisis del poema «Rosa mutabile»",h:
+   `<p><b>Estructura:</b> tres momentos del día —mañana (roja), mediodía (dura como coral), tarde-noche (blanca → se deshoja)—, un ciclo vital completo en un solo día.</p>
+   <p><b>Métrica:</b> versos octosílabos (arte menor). <b>Rima:</b> es un <b>romance</b> (asonante en «á» en los versos pares: está, quemar, coral, relumbrar, sal, metal, deshojar; impares sueltos).</p>
+   <p><b>Recursos:</b> personificación (el rocío «se teme quemar», el sol «se asoma para verla», la tarde «se desmaya»), símil (<span class="cit">«roja como sangre»</span>, <span class="cit">«dura como el coral»</span>, <span class="cit">«blanco de una mejilla de sal»</span>), metáfora («blando cuerno de metal» para la noche), antítesis (roja/blanca, mañana/noche) y simbolismo del color.</p>
+   <p><b>Significado:</b> el color marca las edades —rojo = juventud y pasión; blanco = madurez y palidez; deshojarse = vejez y muerte—. La rosa que vive un solo día es la <b>fugacidad</b>: la vida de Rosita consumida en la espera.</p>`},
+  {q:"4",t:"¿Cuándo aparece el poema y por qué ahí?",h:
+   `<p>Aparece <b>tres veces</b>: (1) en el Acto I, cuando el <b>Tío</b> presenta la rosa; (2) al final del Acto I, recitado por <b>Rosita sola</b> tras despedir al primo; (3) en el Acto II, fragmentado en «Lo que dicen las flores» y al cortar el Tío la rosa «todavía roja».</p>
+   <p><b>Sentido de la ubicación:</b> funciona como <i>leitmotiv</i> que estructura el paso del tiempo. Al recitarlo Rosita justo cuando empieza su espera, Lorca equipara su vida al ciclo de la flor: hoy «roja», mañana se «deshojará».</p>
+   <p><b>Relación con la protagonista:</b> Rosita <i>es</i> la rosa mutabile. Su nombre (rosa pequeña), su vestido rosa y su destino —florecer y marchitarse sin ser «cortada»/casada a tiempo— repiten el poema. El subtítulo, <i>El lenguaje de las flores</i>, lo confirma.</p>`},
+  {q:"5",t:"Un conjuro o frase popular del Ama",h:
+   `<p><b>El conjuro de la sombrilla:</b> <span class="cit">«¡cierra la sombrilla, no se puede abrir bajo techado! ¡Llega la mala suerte! Por la rueda de san Bartolomé / y la varita de san José / y la santa rama de laurel, / enemigo, retírate / por las cuatro esquinas de Jerusalén».</span></p>
+   <p><b>Significado:</b> recoge la superstición popular de que abrir el paraguas bajo techo atrae mala suerte. El Ama <b>conjura el mal</b> invocando santos y lugares sagrados. Refleja la <b>religiosidad popular andaluza</b> y aporta color costumbrista, en contraste con el racionalismo.</p>
+   <p>(Alternativa: <span class="cit">«Del coro al caño y del caño al coro»</span> = ir y venir sin parar; describe a Rosita siempre en movimiento, nunca quieta haciendo encaje.)</p>`},
+  {q:"6",t:"¿Qué personaje te resultó más interesante? (opinión)",h:
+   `<p>Es una pregunta de opinión: respondela en primera persona. Una opción sólida es <b>el Ama</b>, por su lenguaje vivísimo (refranes, conjuros, humor), su lealtad feroz a Rosita y la ternura que asoma bajo su aspereza. Su contraste entre comicidad y dolor («¡Ay, qué lástima de mi niña!») la vuelve la voz más humana del primer acto.</p>
+   <p class="muted" style="font-size:12.5px">Adaptalo a tu propia impresión y justificá con un ejemplo del texto.</p>`}
+ ],
+ a2:[
+  {q:"1",t:"Contraste Tío ↔ Señor X. ¿Por qué visita?",h:
+   `<p>El <b>Señor X</b>, catedrático de Economía, encarna el <b>progreso y el materialismo</b> del nuevo siglo: automóviles, velocidad, la carrera París–Madrid, Tolstoi, Santos Dumont. <span class="cit">«Pues yo siempre seré de este siglo»</span>; <span class="cit">«hay que ayudar a la civilización»</span>.</p>
+   <p>El <b>Tío</b> defiende la <b>naturaleza, la botánica y la calma</b>: <span class="cit">«La botánica también es una ciencia»</span>; <span class="cit">«¿adónde van con tanta prisa?»</span>. Es un <b>choque ideológico</b>: modernidad frente a tradición y naturaleza.</p>
+   <p><b>Por qué visita:</b> por el <b>santo (onomástico)</b> de Rosita; deja un regalo (un pendentif: Torre Eiffel de nácar) y, según el Ama, es otro <b>pretendiente</b>: <span class="cit">«¿También éste pretende a Rosita?»</span>.</p>`},
+  {q:"2",t:"¿Cómo cambia Rosita del Acto I al II?",h:
+   `<p>En el Acto I <b>entra y sale rápido</b>, con prisa y pocas intervenciones («todo lo quiere volando»). En el Acto II <b>permanece en escena</b>, espera el correo y evita salir para <span class="cit">«no enterarse de cómo pasa el tiempo»</span>: <span class="cit">«en la calle noto cómo pasa el tiempo y no quiero perder las ilusiones»</span>. Pasa de la vivacidad a la <b>espera estática</b>.</p>`},
+  {q:"3",t:"La anécdota del Ama y su perspectiva",h:
+   `<p>El Ama cuenta a la Tía que pasó el día con Rosita en la puerta del <b>circo</b>, porque Rosita se empeñó en que un <b>titiritero</b> se parecía a su primo —aunque <span class="cit">«No se parecía nada»</span>.</p>
+   <p><b>Perspectiva del Ama:</b> Rosita <b>se engaña</b>, se aferra a una ilusión. Es <span class="cit">«la flor de la manteca»</span> a la que el novio dejó <span class="cit">«ya quince años plantada»</span>; debería casarse. El Ama ve la realidad que Rosita niega.</p>`},
+  {q:"4",t:"El cariño Ama–Tía y el portatermómetro (con citas)",h:
+   `<p>Discuten <b>quién quiere más a Rosita</b> y la tensión escala hasta que la Tía «despide» al Ama. Al salir, al Ama se le <b>cae el portatermómetro</b> (regalo para el santo de Rosita) y ambas, llorando, se reconcilian.</p>
+   <p>Citas: <span class="cit">«¡Es que tú la quieres como nadie! —Pero después que usted. —No. Tú le has dado tu sangre. —Usted le ha sacrificado su vida.»</span> Y el Tío resume: <span class="cit">«De tanto vivir juntas, los encajes se os hacen espinas.»</span></p>
+   <p><b>Por qué importa:</b> el objeto caído <b>frena la pelea</b> y revela que la rivalidad es, en el fondo, <b>amor desbordado</b> por Rosita. Las dos se definen por su entrega a ella.</p>`},
+  {q:"5",t:"¿Cuánto tiempo pasó? Cita e implicaciones",h:
+   `<p><b>Quince años.</b> Cita: la Tía responde <span class="cit">«¡Quince años!»</span> (cuando Ayola dice que «casi se me ha olvidado la cara de tu novio»). También el Ama: <span class="cit">«un hombre se vaya y deje ya quince años plantada a una mujer que es la flor de la manteca»</span>.</p>
+   <p><b>Implicaciones:</b> Rosita <b>envejece esperando</b>; su juventud se consume como la rosa que se deshoja. La espera se vuelve socialmente <b>ridícula</b> y la condena a la soltería.</p>`},
+  {q:"6",t:"¿Qué mujeres visitan y qué contraste hay?",h:
+   `<p>Visitan, por el santo de Rosita, las <b>tres Solteronas «cursilonas»</b> con su <b>Madre</b> y las <b>dos Ayolas</b> (hijas del fotógrafo).</p>
+   <p><b>Contraste:</b> las Solteronas son mayores, <b>pobres pero aparentan</b> lujo y clase, melancólicas y «cursis»; las Ayolas son <b>jóvenes, ricas, frescas y descaradas</b>, ansiosas por casarse. Dos modos opuestos de vivir la espera del matrimonio.</p>`},
+  {q:"7",t:"Inferencias sobre esas mujeres (3 citas)",h:
+   `<p><b>Las Solteronas aparentan estatus.</b> Acotación: <span class="cit">«vienen con inmensos sombreros de plumas malas, trajes exageradísimos, guantes hasta el codo…»</span> (pág. ___). La Madre: <span class="cit">«¡Gusto no me falta, lo que me falta es dinero!»</span> y, ante «huevo en el almuerzo o silla en el paseo», responden <span class="cit">«sillas»</span>: priorizan la apariencia social sobre lo básico.</p>
+   <p><b>Las Ayolas son desinhibidas.</b> <span class="cit">«Con quien sea, pero no me quiero quedar soltera.»</span></p>
+   <p><b>Inferencia:</b> la mujer vale socialmente <b>por casarse</b>; la soltería es un estigma que se disimula con apariencias.</p>`},
+  {q:"8",t:"La situación social de la mujer soltera (citas)",h:
+   `<p>La soltera es objeto de <b>burla y lástima</b>; su valor depende del matrimonio. Citas: Ayola: <span class="cit">«Las mujeres sin novio están pochas, recocidas… ¡todas están rabiadas!»</span> y <span class="cit">«si soy amiga de Rosita es porque sé que tiene novio»</span>. La Solterona, herida: <span class="cit">«Hay muchas que no se casan porque no quieren.»</span></p>
+   <p><b>Conclusión:</b> presión social brutal, obligación de aparentar y miedo a «quedarse soltera». Rosita encarna la víctima de ese destino.</p>`},
+  {q:"9",t:"Tres recursos del Acto II (citas + análisis)",h:
+   `<p><b>1. Lenguaje de las flores (símbolo):</b> <span class="cit">«las blancas son casamiento / y las azules, mortaja»</span>. Cada flor = un sentimiento; la mezcla amor/muerte prefigura el destino de Rosita.</p>
+   <p><b>2. Metáfora:</b> <span class="cit">«De tanto vivir juntas, los encajes se os hacen espinas»</span>. Lo delicado se vuelve hiriente: la relación Tía–Ama.</p>
+   <p><b>3. Símbolo de la rosa:</b> <span class="cit">«he cortado la única rosa mudable… Todavía estaba roja… todavía tiene la brasa de su juventud»</span>. Rosita aún «roja», pero a punto de marchitarse.</p>`},
+  {q:"10",t:"El final del acto y la carta",h:
+   `<p>Llega <b>por fin la carta</b> del novio: se casará con Rosita, pero <b>por poderes</b> (un representante en la ceremonia) porque no puede venir; «luego vendrá él».</p>
+   <p><b>Reacciones:</b> alegría general (la Madre: <span class="cit">«¡Dios te haga lo feliz que mereces!»</span>); Rosita lo toma como <span class="cit">«una prueba más de lo que me quiere»</span>; el <b>Ama desconfía</b>: <span class="cit">«¡Que venga en persona y se case! ¡Poderes!… que yo no quiero poderes»</span>. El acto cierra con un vals y la rosa «todavía roja».</p>
+   <p><b>Importancia:</b> la boda «por poderes» es una victoria <b>sospechosa</b>; el lector intuye el engaño que se confirmará. La rosa roja a punto de deshojarse sella el sentido.</p>`}
+ ]
+};
+function buildAcc(list,mountId){
+ const m=$(mountId);
+ list.forEach(item=>{
+  const a=document.createElement("div");a.className="acc";
+  a.innerHTML=`<div class="acc-h"><span class="qn">${item.q}</span><span class="qt">${item.t}</span><span class="car">▶</span></div><div class="acc-b"><div class="acc-b-in">${item.h}</div></div>`;
+  $(".acc-h",a).onclick=()=>a.classList.toggle("open");
+  m.appendChild(a);
+ });
+}
+buildAcc(QA.a1,"#paneA1");buildAcc(QA.a2,"#paneA2");
+$$(".acc-tabs button").forEach(b=>b.onclick=()=>{
+ $$(".acc-tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+ $("#paneA1").classList.toggle("on",b.dataset.p==="a1");
+ $("#paneA2").classList.toggle("on",b.dataset.p==="a2");
+});
+
+/* ============ GLOSARIO SINTÁCTICO ============ */
+const GLOS=[
+ {cat:"La oración",items:[
+  {ab:"O.B.",c:"--suj",nm:"Oración bimembre",df:"Tiene sujeto y predicado."},
+  {ab:"O.U.",c:"--neu",nm:"Oración unimembre",df:"Un solo constituyente; no se divide en sujeto y predicado."},
+  {ab:"O.C.",c:"--nx",nm:"Oración compuesta",df:"Dos o más proposiciones de igual jerarquía (yuxtaposición o coordinación)."}
+ ]},
+ {cat:"Sujeto",items:[
+  {ab:"S.E.S.",c:"--suj",nm:"Sujeto expreso simple",df:"Mencionado, con un solo núcleo."},
+  {ab:"S.E.C.",c:"--suj",nm:"Sujeto expreso compuesto",df:"Dos o más núcleos."},
+  {ab:"S.T.",c:"--suj",nm:"Sujeto tácito",df:"No aparece; se infiere por la desinencia del verbo."}
+ ]},
+ {cat:"Predicado",items:[
+  {ab:"P.V.S.",c:"--pred",nm:"Predicado verbal simple",df:"Un núcleo verbal."},
+  {ab:"P.V.C.",c:"--pred",nm:"Predicado verbal compuesto",df:"Dos o más núcleos verbales."},
+  {ab:"P.N.V.",c:"--pred",nm:"Predicado no verbal",df:"Núcleo no verbal: nominal, adverbial o verboidal."}
+ ]},
+ {cat:"Núcleos y modificadores",items:[
+  {ab:"n.",c:"--neu",nm:"Núcleo del sujeto",df:"Sustantivo o pronombre."},
+  {ab:"n.v.",c:"--pred",nm:"Núcleo verbal",df:"El verbo conjugado del predicado."},
+  {ab:"m.d.",c:"--neu",nm:"Modificador directo",df:"Determinante o adjetivo; concuerda en género y número, sin nexo."},
+  {ab:"m.i.",c:"--neu",nm:"Modificador indirecto",df:"Se une por nexo subordinante (preposición) + término."},
+  {ab:"ap.",c:"--neu",nm:"Aposición",df:"Sustantivo que aclara al núcleo (explicativa entre comas / especificativa sin comas)."},
+  {ab:"c.c.",c:"--neu",nm:"Construcción comparativa",df:"Modificador con nexo «como» (u otro comparativo) + término."}
+ ]},
+ {cat:"Complementos del verbo",items:[
+  {ab:"o.d.",c:"--od",nm:"Objeto directo",df:"Recibe la acción; se reemplaza por lo / la / los / las."},
+  {ab:"o.i.",c:"--oi",nm:"Objeto indirecto",df:"Destinatario o beneficiario (a / para); se reemplaza por le / les."},
+  {ab:"c.ag.",c:"--oi",nm:"Complemento agente",df:"En voz pasiva, quien realiza la acción (por + …)."},
+  {ab:"circ.",c:"--circ",nm:"Circunstancial",df:"Tiempo, lugar, modo, cantidad, causa, etc."},
+  {ab:"p.s.o.",c:"--pred",nm:"Predicativo subjetivo obligatorio",df:"Con verbo copulativo (ser, estar, parecer…); concuerda con el sujeto."},
+  {ab:"p.s.n.o.",c:"--pred",nm:"Pred. subjetivo no obligatorio",df:"Con verbo no copulativo; concuerda con el sujeto; se puede omitir."},
+  {ab:"p.o.",c:"--pred",nm:"Predicativo objetivo",df:"Modifica al n.v. y al o.d. a la vez; concuerda con el o.d."}
+ ]},
+ {cat:"Nexos y términos",items:[
+  {ab:"n/s",c:"--neu",nm:"Nexo subordinante",df:"Preposición que encabeza m.i., o.i. o circunstancial."},
+  {ab:"t.",c:"--neu",nm:"Término",df:"El sustantivo o construcción que cierra el grupo introducido por el nexo."},
+  {ab:"n.c.",c:"--nx",nm:"Nexo coordinante",df:"Conjunción o locución que une las proposiciones coordinadas."}
+ ]}
+];
+const glos=$("#glossary");
+GLOS.forEach(g=>{
+ const h=document.createElement("h3");h.className="gcat";h.textContent=g.cat;glos.appendChild(h);
+ const grid=document.createElement("div");grid.className="glos";
+ g.items.forEach(it=>{
+  const d=document.createElement("div");d.className="gitem";
+  d.innerHTML=`<span class="ab" style="background:hsl(var(${it.c}))">${it.ab}</span><div class="nm">${it.nm}</div><div class="df">${it.df}</div>`;
+  grid.appendChild(d);
+ });
+ glos.appendChild(grid);
+});
+
+/* ============ TIPOS DE COORDINACIÓN ============ */
+const COORD=[
+ {t:"Copulativa",nx:"y · e · ni",desc:"Adición o suma de elementos.",p1:"El avión aterrizó suavemente",n:"y",p2:"un paisaje extraño apareció en las ventanillas"},
+ {t:"Disyuntiva",nx:"o · u",desc:"Alternancia: una opción u otra.",p1:"¿Esta oración es compuesta",n:"o",p2:"estamos equivocados?"},
+ {t:"Adversativa",nx:"pero · sino · mas · sin embargo · no obstante",desc:"Oposición o restricción.",p1:"El piloto les explicó la situación",n:", pero",p2:"el ruido de las turbinas tapó su voz"},
+ {t:"Yuxtaposición",nx:", · ; · :",desc:"Sin nexo: las proposiciones se unen por signos de puntuación.",p1:"El público permanecía en silencio",n:";",p2:"los músicos esperaban la señal"}
+];
+const types=$("#types");
+COORD.forEach(c=>{
+ const el=document.createElement("div");el.className="type";
+ el.innerHTML=`<div class="type-h"><span>${c.t}</span><span style="display:flex;align-items:center;gap:10px"><span class="nx">${c.nx}</span><span class="car">▶</span></span></div>
+ <div class="type-b"><div class="type-b-in"><p class="desc">${c.desc}</p>
+ <div class="cajas"><div class="cj"><span class="l">Proposición 1</span><span class="t">${c.p1}</span></div>
+ <div class="cjn">${c.n}</div>
+ <div class="cj"><span class="l">Proposición 2</span><span class="t">${c.p2}</span></div></div></div></div>`;
+ $(".type-h",el).onclick=()=>el.classList.toggle("open");
+ types.appendChild(el);
+});
+
+/* ============ ANALIZADOR EN CAJAS ============ */
+const PAL=[
+ {g:"Sujeto",items:[["S.E.S.","--suj"],["S.E.C.","--suj"],["S.T.","--suj"]]},
+ {g:"Predicado",items:[["P.V.S.","--pred"],["P.V.C.","--pred"],["P.N.V.","--pred"]]},
+ {g:"Núcleos",items:[["n.","--neu"],["n.v.","--pred"]]},
+ {g:"Modific.",items:[["m.d.","--neu"],["m.i.","--neu"],["ap.","--neu"]]},
+ {g:"Complementos",items:[["o.d.","--od"],["o.i.","--oi"],["circ.","--circ"],["p.s.o.","--pred"],["p.s.n.o.","--pred"],["p.o.","--pred"]]},
+ {g:"Nexos",items:[["n/s","--neu"],["t.","--neu"],["nexo","--nx"]]},
+ {g:"Proposición",items:[["Prop. 1","--nx"],["Prop. 2","--nx"]]}
+];
+const labColor={};PAL.forEach(g=>g.items.forEach(([l,c])=>labColor[l]=c));
+const SUBJ=[{md:"El",n:"jardinero"},{md:"La",n:"profesora"},{md:"El",n:"científico"},{md:"Mi",n:"hermano"},{md:"Aquel",n:"actor"},{md:"La",n:"directora"},{md:"El",n:"público"}];
+const VERB=["cortó","entregó","observó","repitió","organizó","explicó","recibió","corrigió","guardó"];
+const OD=[{md:"las",n:"rosas"},{md:"los",n:"certificados"},{md:"el",n:"experimento"},{md:"la",n:"noticia"},{md:"los",n:"trabajos"}];
+const CIRC=[{ns:"por",md:"la",n:"mañana",tipo:"circ. de tiempo"},{ns:"en",md:"el",n:"jardín",tipo:"circ. de lugar"},{ns:"durante",md:"el",n:"acto",tipo:"circ. de tiempo"},{ns:"con",md:"mucho",n:"cuidado",tipo:"circ. de modo"}];
+const NEXOS=[{w:"y",tipo:"copulativa"},{w:"o",tipo:"disyuntiva"},{w:", pero",tipo:"adversativa"},{w:";",tipo:"yuxtaposición"}];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+let words=[], solAnn=[], azKind="simple";
+let model=[], wordIdx=0, selA=null, selB=null, dragging=false;
+
+function buildClause(off){
+ const s=pick(SUBJ),v=pick(VERB),od=pick(OD),hasCirc=Math.random()<.75,c=hasCirc?pick(CIRC):null;
+ const toks=[], ann=[]; let i=off;
+ const sStart=i; toks.push(s.md);ann.push({l:"m.d.",f:i,t:i});i++; const nS=i; toks.push(s.n);ann.push({l:"n.",f:i,t:i});i++;
+ ann.push({l:"S.E.S.",f:sStart,t:nS});
+ const pStart=i; toks.push(v);ann.push({l:"n.v.",f:i,t:i});i++;
+ const odS=i; toks.push(od.md);ann.push({l:"m.d.",f:i,t:i});i++; toks.push(od.n);ann.push({l:"n.",f:i,t:i});const odE=i;i++;
+ ann.push({l:"o.d.",f:odS,t:odE});
+ let pEnd=odE;
+ if(c){
+  const cS=i; toks.push(c.ns);ann.push({l:"n/s",f:i,t:i});i++;
+  if(c.md){toks.push(c.md);ann.push({l:"m.d.",f:i,t:i});i++;}
+  const tS=i; toks.push(c.n);ann.push({l:"n.",f:i,t:i});const tE=i;i++;
+  ann.push({l:"t.",f:c.md?tS-1:tS,t:tE});
+  ann.push({l:c.tipo,f:cS,t:tE});
+  pEnd=tE;
+ }
+ ann.push({l:"P.V.S.",f:pStart,t:pEnd});
+ return {toks,ann,start:off,end:pEnd};
+}
+function generate(){
+ wordIdx=0;solAnn=[];
+ let toks=[];
+ if(azKind==="simple"){
+  const cl=buildClause(0);toks=cl.toks;solAnn=cl.ann;
+ }else{
+  const c1=buildClause(0);let toks1=c1.toks;
+  const nx=pick(NEXOS);
+  const nxIdx=c1.end+1;
+  const c2=buildClause(nxIdx+1);
+  toks=[...toks1, nx.w, ...c2.toks];
+  solAnn=[...c1.ann];
+  solAnn.push({l:"nexo · "+nx.tipo,f:nxIdx,t:nxIdx,plain:true});
+  // shift c2 ann already use real offsets (buildClause used off=nxIdx+1)
+  solAnn=solAnn.concat(c2.ann);
+  solAnn.push({l:"Proposición 1",f:c1.start,t:c1.end});
+  solAnn.push({l:"Proposición 2",f:c2.start,t:c2.end});
+ }
+ words=toks.map((w,i)=>({w,i}));
+ model=words.map(o=>({type:"w",w:o.w,i:o.i}));
+ selA=selB=null;hidePalette();$("#azSolWrap").classList.remove("show");
+ renderModel();
+}
+/* ----- model helpers ----- */
+function nodeRange(node){
+ if(node.type==="w")return[node.i,node.i];
+ let mn=Infinity,mx=-Infinity;
+ node.ch.forEach(c=>{const r=nodeRange(c);mn=Math.min(mn,r[0]);mx=Math.max(mx,r[1]);});
+ return[mn,mx];
+}
+function childContaining(arr,idx){for(let k=0;k<arr.length;k++){const r=nodeRange(arr[k]);if(idx>=r[0]&&idx<=r[1])return k;}return-1;}
+function wrapRange(a,b,label){
+ const lo=Math.min(a,b),hi=Math.max(a,b);
+ // descend to deepest sibling-list (arr) where both lo and hi are covered by children, going deeper only if both in same single child that is a box
+ let arr=model;
+ while(true){
+  const cs=childContaining(arr,lo),ce=childContaining(arr,hi);
+  if(cs===-1||ce===-1)return false;
+  if(cs===ce && arr[cs].type==="b"){arr=arr[cs].ch;continue;}
+  // wrap children cs..ce
+  const removed=arr.splice(cs,ce-cs+1);
+  arr.splice(cs,0,{type:"b",label,uid:"b"+(++uidc),ch:removed});
+  return true;
+ }
+}
+let uidc=0;
+function unwrap(uid){
+ function rec(arr){
+  for(let k=0;k<arr.length;k++){
+   const nd=arr[k];
+   if(nd.type==="b"){
+    if(nd.uid===uid){arr.splice(k,1,...nd.ch);return true;}
+    if(rec(nd.ch))return true;
+   }
+  }
+  return false;
+ }
+ rec(model);
+}
+function renderNode(node){
+ if(node.type==="w")return `<span class="aw${(selA!=null&&node.i>=Math.min(selA,selB)&&node.i<=Math.max(selA,selB))?' sel':''}" data-i="${node.i}">${node.w}</span>`;
+ const c=labColor[node.label]||"--neu";
+ return `<span class="cbox" data-uid="${node.uid}" style="--cat:var(${c})"><span class="lab" data-uid="${node.uid}">${node.label}</span>${node.ch.map(renderNode).join("")}</span>`;
+}
+function renderModel(){
+ const cv=$("#azCanvas");
+ cv.innerHTML=model.map(renderNode).join("");
+}
+/* solution rendering from ann ranges (clean hierarchy) */
+function renderSolution(){
+ const ranges=solAnn.filter(a=>!a.plain).slice().sort((x,y)=>x.f-y.f||y.t-x.t);
+ const plains={}; solAnn.filter(a=>a.plain).forEach(a=>plains[a.f]=a.l);
+ function build(s,e,avail){
+  let html="",pos=s;
+  while(pos<=e){
+   // find a range starting at pos within avail
+   const r=avail.find(a=>a.f===pos);
+   if(r){
+    const inner=avail.filter(a=>a!==r&&a.f>=r.f&&a.t<=r.t&&!(a.f===r.f&&a.t===r.t));
+    const c=labColor[r.l.split(" ")[0]]||(r.l.startsWith("circ")?"--circ":r.l.startsWith("S.")?"--suj":r.l.startsWith("P.")?"--pred":r.l.startsWith("Prop")?"--nx":"--neu");
+    html+=`<span class="cbox ro" style="--cat:var(${c})"><span class="lab">${r.l}</span>${build(r.f,r.t,inner)}</span>`;
+    pos=r.t+1;
+   }else{
+    const w=words[pos];
+    if(plains[pos])html+=`<span class="cbox ro" style="--cat:var(--nx)"><span class="lab">${plains[pos]}</span><span class="aw" style="cursor:default">${w.w}</span></span>`;
+    else html+=`<span class="aw" style="cursor:default">${w.w}</span>`;
+    pos++;
+   }
+  }
+  return html;
+ }
+ // top-level ranges = those not contained in any other
+ const top=ranges.filter(r=>!ranges.some(o=>o!==r&&o.f<=r.f&&o.t>=r.t&&!(o.f===r.f&&o.t===r.t)));
+ $("#azSolCanvas").innerHTML=build(0,words.length-1,ranges);
+}
+/* palette */
+function buildPalette(){
+ const p=$("#azPalette");
+ p.innerHTML=`<p class="sel-info" id="azSelInfo"></p>`+PAL.map(g=>
+  `<div class="pgroup"><span class="gl">${g.g}</span>`+g.items.map(([l,c])=>
+   `<button class="plab" style="background:hsl(var(${c}))" data-l="${l}">${l}</button>`).join("")+`</div>`).join("");
+ $$(".plab",p).forEach(b=>b.onclick=()=>{
+  if(selA==null)return;
+  wrapRange(selA,selB,b.dataset.l);
+  selA=selB=null;hidePalette();renderModel();
+ });
+}
+function showPalette(){
+ const lo=Math.min(selA,selB),hi=Math.max(selA,selB);
+ $("#azSelInfo").textContent=`Selección: «${words.slice(lo,hi+1).map(w=>w.w).join(" ")}» → elegí una etiqueta:`;
+ $("#azPalette").classList.add("show");
+}
+function hidePalette(){$("#azPalette").classList.remove("show");}
+buildPalette();
+
+/* drag selection (pointer events) */
+const canvas=$("#azCanvas");
+canvas.addEventListener("pointerdown",e=>{
+ const w=e.target.closest(".aw");if(!w)return;
+ e.preventDefault();dragging=true;selA=selB=+w.dataset.i;hidePalette();renderModel();
+});
+canvas.addEventListener("pointermove",e=>{
+ if(!dragging)return;
+ const el=document.elementFromPoint(e.clientX,e.clientY);
+ const w=el&&el.closest&&el.closest(".aw");
+ if(w){selB=+w.dataset.i;renderModel();}
+});
+window.addEventListener("pointerup",()=>{
+ if(!dragging)return;dragging=false;
+ if(selA!=null){showPalette();renderModel();}
+});
+/* click a box label to unwrap */
+canvas.addEventListener("click",e=>{
+ const lab=e.target.closest(".lab");
+ if(lab){unwrap(lab.dataset.uid);renderModel();}
+});
+$("#azGen").onclick=generate;
+$("#azClear").onclick=()=>{model=words.map(o=>({type:"w",w:o.w,i:o.i}));selA=selB=null;hidePalette();$("#azSolWrap").classList.remove("show");renderModel();};
+$("#azSol").onclick=()=>{renderSolution();$("#azSolWrap").classList.add("show");};
+$$("#azKind button").forEach(b=>b.onclick=()=>{
+ $$("#azKind button").forEach(x=>x.classList.remove("on"));b.classList.add("on");azKind=b.dataset.k;generate();
+});
+generate();
+
+/* ============ VERBOS: tablas ============ */
+const PRON=["Yo","Tú / Vos","Él / Ella / Ud.","Nosotros/as","Vosotros/as","Ellos / Uds."];
+const MOODS={
+ indicativo:{label:"Indicativo",desc:"Presenta la acción como real y objetiva: un hecho que se afirma o se niega.",
+  simples:[
+   ["Presente","amo · temo · parto","amas/amás · temes/temés · partes/partís","ama · teme · parte","amamos · tememos · partimos","amáis · teméis · partís","aman · temen · parten"],
+   ["Pretérito imperfecto","amaba · temía · partía","amabas · temías · partías","amaba · temía · partía","amábamos · temíamos · partíamos","amabais · temíais · partíais","amaban · temían · partían"],
+   ["Pretérito perfecto simple","amé · temí · partí","amaste · temiste · partiste","amó · temió · partió","amamos · temimos · partimos","amasteis · temisteis · partisteis","amaron · temieron · partieron"],
+   ["Futuro simple","amaré · temeré · partiré","amarás · temerás · partirás","amará · temerá · partirá","amaremos · temeremos · partiremos","amaréis · temeréis · partiréis","amarán · temerán · partirán"],
+   ["Condicional simple","amaría · temería · partiría","amarías · temerías · partirías","amaría · temería · partiría","amaríamos · temeríamos · partiríamos","amaríais · temeríais · partiríais","amarían · temerían · partirían"]
+  ],
+  compuestos:[
+   ["Pret. perfecto compuesto","he amado, temido, partido","has amado…","ha amado…","hemos amado…","habéis amado…","han amado…"],
+   ["Pret. pluscuamperfecto","había amado…","habías amado…","había amado…","habíamos amado…","habíais amado…","habían amado…"],
+   ["Pretérito anterior","hube amado…","hubiste amado…","hubo amado…","hubimos amado…","hubisteis amado…","hubieron amado…"],
+   ["Futuro compuesto","habré amado…","habrás amado…","habrá amado…","habremos amado…","habréis amado…","habrán amado…"],
+   ["Condicional compuesto","habría amado…","habrías amado…","habría amado…","habríamos amado…","habríais amado…","habrían amado…"]
+  ],
+  obra:'<em>«El siglo que acabamos de empezar será un siglo materialista.»</em> — el futuro «será» afirma un hecho: indicativo.'},
+ subjuntivo:{label:"Subjuntivo",desc:"Expresa lo posible, lo deseado, lo hipotético o lo subjetivo. Frecuente en oraciones subordinadas.",
+  simples:[
+   ["Presente","ame · tema · parta","ames · temas · partas","ame · tema · parta","amemos · temamos · partamos","améis · temáis · partáis","amen · teman · partan"],
+   ["Pret. imperfecto (-ra / -se)","amara/amase · temiera/temiese · partiera/partiese","amaras/amases…","amara/amase…","amáramos/amásemos…","amarais/amaseis…","amaran/amasen…"],
+   ["Futuro simple","amare · temiere · partiere","amares · temieres · partieres","amare · temiere · partiere","amáremos · temiéremos · partiéremos","amareis · temiereis · partiereis","amaren · temieren · partieren"]
+  ],
+  compuestos:[
+   ["Pret. perfecto compuesto","haya amado, temido, partido","hayas amado…","haya amado…","hayamos amado…","hayáis amado…","hayan amado…"],
+   ["Pret. pluscuamperfecto","hubiera/hubiese amado…","hubieras/hubieses…","hubiera/hubiese…","hubiéramos/hubiésemos…","hubierais/hubieseis…","hubieran/hubiesen…"],
+   ["Futuro compuesto","hubiere amado…","hubieres amado…","hubiere amado…","hubiéremos amado…","hubiereis amado…","hubieren amado…"]
+  ],
+  obra:'<em>«…yo quiero que Rosita me espere.»</em> · <em>«Ojalá me equivoque.»</em> — deseo e hipótesis: subjuntivo.'},
+ imperativo:{label:"Imperativo",desc:"Expresa órdenes o mandatos. Solo tiene presente y solo afirmativo: la orden negativa usa el subjuntivo («no ames»).",
+  simples:[
+   ["Presente (único tiempo)","—","ama · teme · parte  (Tú)","amá · temé · partí  (Vos)","ame · tema · parta  (Usted)","amemos · temamos · partamos  (Nosotros)","amad · temed · partid  (Vos.) · amen · teman · partan  (Uds.)"]
+  ],
+  compuestos:[],
+  obra:'<em>«Calla. No repliques.»</em> · <em>«Entra, entra y la verás.»</em> · <em>«Anda, corta las flores.»</em> — órdenes: imperativo.'}
+};
+const mt=$("#moodTabs"),mp=$("#moodPanes");
+Object.entries(MOODS).forEach(([key,m],i)=>{
+ const b=document.createElement("button");b.textContent=m.label;if(!i)b.classList.add("on");
+ b.onclick=()=>{$$("#moodTabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+  $$(".tab-pane").forEach(p=>p.classList.toggle("on",p.dataset.k===key));};
+ mt.appendChild(b);
+ const pane=document.createElement("div");pane.className="tab-pane"+(i?"":" on");pane.dataset.k=key;
+ const hasC=m.compuestos.length>0;
+ pane.innerHTML=`<p class="mood-desc">${m.desc}</p>
+  ${hasC?`<div class="subtabs"><button class="on" data-s="simples">Simples</button><button data-s="compuestos">Compuestos</button></div>`:''}
+  <div class="conj" data-s="simples">${tablas(m.simples)}</div>
+  ${hasC?`<div class="conj" data-s="compuestos" style="display:none">${tablas(m.compuestos)}</div>`:''}
+  <div class="callout"><span class="k">En la obra</span><div>${m.obra}</div></div>`;
+ mp.appendChild(pane);
+ if(hasC)$$(".subtabs button",pane).forEach(sb=>sb.onclick=()=>{
+  $$(".subtabs button",pane).forEach(x=>x.classList.remove("on"));sb.classList.add("on");
+  $$(".conj",pane).forEach(cj=>cj.style.display=cj.dataset.s===sb.dataset.s?"":"none");
+ });
+});
+function tablas(arr){
+ return arr.map(row=>{const[t,...f]=row;
+  return `<div class="cb"><p class="ct">${t}</p><table class="ctbl"><tbody>${f.map((x,i)=>`<tr><td>${PRON[i]}</td><td>${x}</td></tr>`).join("")}</tbody></table></div>`;
+ }).join("");
+}
+
+/* ============ ANALIZADOR DE VERBOS ============ */
+const VERBS=[
+ {v:"caminas",p:"2ª",n:"singular",t:"Presente",m:"Indicativo"},
+ {v:"corríamos",p:"1ª",n:"plural",t:"Pret. imperfecto",m:"Indicativo"},
+ {v:"estudiaré",p:"1ª",n:"singular",t:"Futuro simple",m:"Indicativo"},
+ {v:"había llegado",p:"1ª/3ª",n:"singular",t:"Pret. pluscuamperfecto",m:"Indicativo"},
+ {v:"he leído",p:"1ª",n:"singular",t:"Pret. perfecto compuesto",m:"Indicativo"},
+ {v:"habré terminado",p:"1ª",n:"singular",t:"Futuro compuesto",m:"Indicativo"},
+ {v:"cantaría",p:"1ª/3ª",n:"singular",t:"Condicional simple",m:"Indicativo"},
+ {v:"habría aceptado",p:"1ª/3ª",n:"singular",t:"Condicional compuesto",m:"Indicativo"},
+ {v:"escribiéramos",p:"1ª",n:"plural",t:"Pret. imperfecto",m:"Subjuntivo"},
+ {v:"leyera",p:"1ª/3ª",n:"singular",t:"Pret. imperfecto",m:"Subjuntivo"},
+ {v:"haya vuelto",p:"1ª/3ª",n:"singular",t:"Pret. perfecto compuesto",m:"Subjuntivo"},
+ {v:"hubiera salido",p:"1ª/3ª",n:"singular",t:"Pret. pluscuamperfecto",m:"Subjuntivo"},
+ {v:"sea",p:"1ª/3ª",n:"singular",t:"Presente",m:"Subjuntivo"},
+ {v:"fuese",p:"1ª/3ª",n:"singular",t:"Pret. imperfecto",m:"Subjuntivo"},
+ {v:"hubiese comprendido",p:"1ª/3ª",n:"singular",t:"Pret. pluscuamperfecto",m:"Subjuntivo"},
+ {v:"leé",p:"2ª (vos)",n:"singular",t:"Presente",m:"Imperativo"},
+ {v:"vengan",p:"3ª (Uds.)",n:"plural",t:"Presente",m:"Imperativo"},
+ {v:"escuchad",p:"2ª (vos.)",n:"plural",t:"Presente",m:"Imperativo"},
+ {v:"hablemos",p:"1ª",n:"plural",t:"Presente",m:"Imperativo"}
+];
+const vc=$("#vchips"),vo=$("#vout");
+VERBS.forEach(v=>{
+ const b=document.createElement("button");b.className="vchip";b.textContent=v.v;
+ b.onclick=()=>{$$(".vchip").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+  vo.innerHTML=`<div class="vbox"><span class="l">Persona</span><div class="v">${v.p}</div></div>
+  <div class="vbox"><span class="l">Número</span><div class="v">${v.n}</div></div>
+  <div class="vbox"><span class="l">Tiempo</span><div class="v">${v.t}</div></div>
+  <div class="vbox"><span class="l">Modo</span><div class="v">${v.m}</div></div>`;};
+ vc.appendChild(b);
+});
+
+/* ============ QUIZ ============ */
+const QUIZ={
+ comprension:[
+  {q:"¿Cuánto tiempo transcurre entre el Acto I y el Acto II?",o:["5 años","10 años","15 años","20 años"],a:2,e:"La Tía lo dice: «¡Quince años!». Rosita lleva ese tiempo esperando."},
+  {q:"¿A qué lugar de América parte el Sobrino?",o:["Buenos Aires","Tucumán","Caracas","Lima"],a:1,e:"«Cuarenta días de viaje hacen falta para llegar a Tucumán.»"},
+  {q:"¿Qué representa el Señor X frente al Tío?",o:["El amor romántico","El progreso y el materialismo del nuevo siglo","La religión tradicional","La pobreza"],a:1,e:"Defiende automóviles, velocidad y «un siglo materialista»; el Tío, la botánica y la calma."},
+  {q:"Al final del Acto II, ¿qué trae la carta del novio?",o:["Que ya no se casará","Que llega esa tarde","Que se casará por poderes","Que se casó con otra"],a:2,e:"Anuncia la boda «por poderes»: un representante en la ceremonia porque él no puede venir."},
+  {q:"¿Qué hacen las Solteronas «cursilonas»?",o:["Aparentan lujo pese a la pobreza","Trabajan de costureras","Critican a Rosita","Vienen a despedirse"],a:0,e:"«Lujo por fuera y para la boca unas malas migas de maíz.»"},
+  {q:"Según la anécdota del Ama, ¿dónde pasó el día Rosita?",o:["En la iglesia","En el circo, por un titiritero parecido a su primo","En la Alhambra","En casa de las Ayolas"],a:1,e:"Se empeñó en que un titiritero se parecía a su primo (aunque no): se aferra a una ilusión."},
+  {q:"¿Qué objeto se le cae al Ama en la pelea con la Tía?",o:["Un jarro de agua","Un abanico","Un portatermómetro","Un espejo"],a:2,e:"Un portatermómetro (regalo para el santo de Rosita); su caída frena la discusión."},
+  {q:"¿Cómo se presenta Rosita en el Acto I?",o:["Triste y resignada","Entra y sale rápido, con prisa","Encerrada todo el acto","Discutiendo con el Tío"],a:1,e:"Aparece veloz, llena de vida: «todo lo quiere volando». En el II ya permanece esperando."}
+ ],
+ rasgos:[
+  {q:"Identificá el recurso:",c:"«De tanto vivir juntas, los encajes se os hacen espinas.»",o:["Metáfora","Hipérbole","Anáfora","Onomatopeya"],a:0,e:"Metáfora: lo delicado (encajes) se vuelve hiriente (espinas)."},
+  {q:"Identificá el recurso:",c:"«las blancas son casamiento / y las azules, mortaja.»",o:["Antítesis","Lenguaje de las flores (símbolo)","Hipérbaton","Comparación"],a:1,e:"El lenguaje de las flores: cada flor codifica un sentimiento."},
+  {q:"Identificá el recurso:",c:"«luz y sombra, noche y día…»",o:["Antítesis","Metonimia","Aliteración","Elipsis"],a:0,e:"Antítesis: términos contrarios enfrentados."},
+  {q:"Identificá el recurso:",c:"«el veneno que vierte amor… el vestido de mi muerte.»",o:["Símil","Campo semántico de la muerte","Personificación","Epíteto"],a:1,e:"Campo semántico de la muerte: anticipa la «muerte en vida» de Rosita."},
+  {q:"La rosa roja→blanca→deshojada es, sobre todo…",c:"",o:["Descripción botánica","El símbolo de la vida de Rosita","Una metáfora del Tío","Una hipérbole"],a:1,e:"Símbolo rector: juventud, madurez y decadencia de Rosita."},
+  {q:"Identificá el recurso:",c:"«El sol se asoma a los vidrios para verla relumbrar.»",o:["Personificación","Hipérbole","Anáfora","Antítesis"],a:0,e:"Personificación: el sol realiza una acción humana."},
+  {q:"En la «Rosa mutabile», la rima asonante en los pares la convierte en…",c:"",o:["Un soneto","Un romance","Una décima","Un haiku"],a:1,e:"Octosílabos con rima asonante en los versos pares = romance."}
+ ],
+ sintaxis:[
+  {q:"Clasificá:",c:"«La directora entregó los certificados a los estudiantes y los felicitó.»",o:["Copulativa","Adversativa","Disyuntiva","Yuxtaposición"],a:0,e:"Nexo «y» = copulativa (suma)."},
+  {q:"Clasificá:",c:"«El científico consideró exitoso el experimento, pero las autoridades lo repitieron.»",o:["Copulativa","Adversativa","Disyuntiva","Yuxtaposición"],a:1,e:"Nexo «pero» = adversativa (oposición)."},
+  {q:"Clasificá:",c:"«Le prestarás tus apuntes a Martina o no tendrá éxito.»",o:["Copulativa","Adversativa","Disyuntiva","Yuxtaposición"],a:2,e:"Nexo «o» = disyuntiva (alternancia)."},
+  {q:"Clasificá:",c:"«El público permanecía en silencio; los músicos esperaban la señal.»",o:["Copulativa","Adversativa","Disyuntiva","Yuxtaposición"],a:3,e:"Punto y coma, sin nexo = yuxtaposición."},
+  {q:"En «el experimento» (o.d.), ¿qué función cumple «el»?",c:"",o:["núcleo","m.d. (modificador directo)","n/s (nexo)","o.i."],a:1,e:"«el» es modificador directo del núcleo «experimento»."},
+  {q:"En «consideró exitoso el experimento», «exitoso» es…",c:"",o:["m.d.","predicativo objetivo (p.o.)","circ.","n.v."],a:1,e:"Modifica al verbo y al o.d. a la vez: predicativo objetivo."},
+  {q:"El sujeto que no aparece y se infiere por el verbo se llama…",c:"",o:["S.E.S.","S.E.C.","S.T. (tácito)","P.V.S."],a:2,e:"Sujeto tácito: se deduce de la desinencia verbal."}
+ ],
+ verbos:[
+  {q:"«escribiéramos» — ¿qué modo es?",o:["Indicativo","Subjuntivo","Imperativo","Verboide"],a:1,e:"Subjuntivo, pret. imperfecto, 1ª plural."},
+  {q:"«habré terminado» — ¿qué tiempo es?",o:["Futuro simple","Futuro compuesto","Condicional compuesto","Pret. perfecto compuesto"],a:1,e:"Futuro compuesto del indicativo."},
+  {q:"«leé» — ¿qué modo es?",o:["Indicativo","Subjuntivo","Imperativo","Condicional"],a:2,e:"Imperativo: orden a «vos»."},
+  {q:"«haya vuelto» — ¿modo y tiempo?",o:["Indicativo, pret. perf. compuesto","Subjuntivo, pret. perf. compuesto","Subjuntivo, presente","Indicativo, futuro compuesto"],a:1,e:"Subjuntivo, pret. perfecto compuesto."},
+  {q:"«cantaría» — ¿qué tiempo es?",o:["Futuro simple","Condicional simple","Pret. imperfecto","Condicional compuesto"],a:1,e:"Condicional simple del indicativo."},
+  {q:"«había llegado» — ¿qué tiempo es?",o:["Pret. perf. compuesto","Pret. pluscuamperfecto","Pret. anterior","Pret. perf. simple"],a:1,e:"Pret. pluscuamperfecto del indicativo."},
+  {q:"El gerundio de «romper» es…",o:["roto","rompiendo","romper","rompido"],a:1,e:"Gerundio: rompiendo (el participio es «roto», irregular)."},
+  {q:"«sea» — ¿qué modo es?",o:["Indicativo","Subjuntivo","Imperativo","Infinitivo"],a:1,e:"Subjuntivo, presente: posibilidad/deseo, no un hecho."}
+ ]
+};
+let curCat="comprension",answered={},correct={};
+const catL={comprension:"Comprensión",rasgos:"Rasgos",sintaxis:"Sintaxis",verbos:"Verbos"};
+const qt=$("#quizTabs"),qm=$("#quizMount");
+Object.keys(QUIZ).forEach((k,i)=>{
+ const b=document.createElement("button");b.textContent=catL[k];if(!i)b.classList.add("on");
+ b.onclick=()=>{$$("#quizTabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");curCat=k;renderQuiz();};
+ qt.appendChild(b);
+});
+function renderQuiz(){
+ answered[curCat]=answered[curCat]||0;correct[curCat]=correct[curCat]||0;qm.innerHTML="";
+ QUIZ[curCat].forEach((item,qi)=>{
+  const q=document.createElement("div");q.className="q";
+  q.innerHTML=`<p class="qn"><b>${qi+1}.</b>${item.q}</p>${item.c?`<p class="cita">«${item.c}»</p>`:''}<div class="opts"></div><div class="exp"></div>`;
+  const opts=$(".opts",q),exp=$(".exp",q);
+  item.o.forEach((o,oi)=>{
+   const btn=document.createElement("button");btn.className="opt";
+   btn.innerHTML=`<span class="mk">${String.fromCharCode(65+oi)}</span><span>${o}</span>`;
+   btn.onclick=()=>{
+    if($(".opt.locked",opts))return;
+    $$(".opt",opts).forEach(x=>x.classList.add("locked"));
+    const ok=oi===item.a;btn.classList.add(ok?"correct":"wrong");
+    if(!ok)$$(".opt",opts)[item.a].classList.add("correct");
+    exp.innerHTML=`<b>${ok?"¡Correcto!":"Repasá:"}</b> ${item.e}`;exp.classList.add("show");
+    answered[curCat]++;if(ok)correct[curCat]++;updateScore();
+   };
+   opts.appendChild(btn);
+  });
+  qm.appendChild(q);
+ });
+ updateScore();
+}
+function updateScore(){
+ const tot=QUIZ[curCat].length,ans=answered[curCat]||0,cor=correct[curCat]||0;
+ $("#scorePct").textContent=`${cor} / ${ans}`;
+ $("#scoreFill").style.width=(ans?cor/tot*100:0)+"%";
+ const d=$("#quizDone");
+ if(ans>=tot){d.textContent=`Bloque completo · ${cor}/${tot} (${Math.round(cor/tot*100)}%).`;d.classList.add("show");}
+ else d.classList.remove("show");
+}
+$("#quizReset").onclick=()=>{answered[curCat]=0;correct[curCat]=0;renderQuiz();window.scrollTo({top:$("#practica").offsetTop-60,behavior:"smooth"});};
+renderQuiz();
+
+/* ============ SHADER HERO (three.js) ============ */
+(function initShader(){
+ if(typeof THREE==="undefined")return;
+ const container=document.getElementById("shaderHero");if(!container)return;
+ const vert="void main(){gl_Position=vec4(position,1.0);}";
+ const frag=`#define TWO_PI 6.2831853072
+ #define PI 3.14159265359
+ precision highp float;
+ uniform vec2 resolution; uniform float time;
+ void main(void){
+  vec2 uv=(gl_FragCoord.xy*2.0-resolution.xy)/min(resolution.x,resolution.y);
+  float t=time*0.05; float lineWidth=0.002;
+  vec3 color=vec3(0.0);
+  for(int j=0;j<3;j++){ for(int i=0;i<5;i++){
+   color[j]+=lineWidth*float(i*i)/abs(fract(t-0.01*float(j)+float(i)*0.01)*5.0 - length(uv) + mod(uv.x+uv.y,0.2));
+  }}
+  gl_FragColor=vec4(color[0],color[1],color[2],1.0);
+ }`;
+ const camera=new THREE.Camera();camera.position.z=1;
+ const scene=new THREE.Scene();
+ const geo=new THREE.PlaneGeometry(2,2);
+ const uniforms={time:{value:1.0},resolution:{value:new THREE.Vector2()}};
+ const mat=new THREE.ShaderMaterial({uniforms,vertexShader:vert,fragmentShader:frag});
+ scene.add(new THREE.Mesh(geo,mat));
+ let renderer;try{renderer=new THREE.WebGLRenderer({antialias:true});}catch(e){return;}
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+ container.appendChild(renderer.domElement);
+ function resize(){const w=container.clientWidth,h=container.clientHeight;renderer.setSize(w,h);
+  uniforms.resolution.value.x=renderer.domElement.width;uniforms.resolution.value.y=renderer.domElement.height;}
+ resize();window.addEventListener("resize",resize);
+ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ (function loop(){requestAnimationFrame(loop);uniforms.time.value+=reduce?0:0.05;renderer.render(scene,camera);})();
+})();
+
+/* ============ PRETÉRITOS · práctica visual ============ */
+const PRET={
+ plus:{n:"Pluscuamperfecto",f:"había amado",u:"Acción pasada anterior a otra también pasada."},
+ ant:{n:"Pretérito anterior",f:"hube amado",u:"Inmediatamente anterior a otra pasada (uso literario)."},
+ simple:{n:"Perfecto simple",f:"amé",u:"Acción pasada puntual y terminada."},
+ imperf:{n:"Pret. imperfecto",f:"amaba",u:"Acción pasada en curso o habitual, sin fin marcado."},
+ comp:{n:"Perfecto compuesto",f:"he amado",u:"Pasado reciente, ligado al presente."}
+};
+const PORDER=["plus","ant","simple","imperf","comp"];
+const PITEMS=[
+ {form:"amé",k:"simple"},{form:"temías",k:"imperf"},{form:"he leído",k:"comp"},
+ {form:"había llegado",k:"plus"},{form:"hube terminado",k:"ant"},{form:"partió",k:"simple"},
+ {form:"corríamos",k:"imperf"},{form:"has comido",k:"comp"},{form:"habían salido",k:"plus"},
+ {form:"cantaba",k:"imperf"},{form:"escribí",k:"simple"},{form:"hemos vuelto",k:"comp"},
+ {form:"habías estudiado",k:"plus"}
+];
+const ptlEl=$("#ptl");
+PORDER.forEach(k=>{
+ const b=document.createElement("button");b.className="pn";b.dataset.k=k;
+ b.innerHTML=`<span class="pdot"></span><span class="pnn">${PRET[k].n}</span>`;
+ b.onclick=()=>{$$(".pn",ptlEl).forEach(x=>x.classList.remove("sel"));b.classList.add("sel");
+  $("#pInfo").innerHTML=`<b>${PRET[k].n}</b> — ${PRET[k].u} <span class="muted">(p. ej. <i>${PRET[k].f}</i>)</span>`;};
+ ptlEl.appendChild(b);
+});
+let pi=0,pAns=0,pCor=0;
+function renderP(){
+ const it=PITEMS[pi];
+ $("#pForm").textContent=it.form;
+ $("#pExp").classList.remove("show");$("#pExp").innerHTML="";
+ $("#pNext").classList.remove("show");
+ $$(".pn",ptlEl).forEach(x=>x.classList.remove("lit"));
+ $("#pProg").textContent=`Ítem ${pi+1} de ${PITEMS.length}`;
+ const opts=$("#pOpts");opts.innerHTML="";
+ PORDER.forEach((k,oi)=>{
+  const btn=document.createElement("button");btn.className="opt";
+  btn.innerHTML=`<span class="mk">${String.fromCharCode(65+oi)}</span><span>${PRET[k].n}</span>`;
+  btn.onclick=()=>{
+   if($(".opt.locked",opts))return;
+   $$(".opt",opts).forEach(x=>x.classList.add("locked"));
+   const ok=k===it.k;btn.classList.add(ok?"correct":"wrong");
+   $$(".opt",opts)[PORDER.indexOf(it.k)].classList.add("correct");
+   ptlEl.querySelector('.pn[data-k="'+it.k+'"]').classList.add("lit");
+   $("#pExp").innerHTML=`<b>${ok?"¡Correcto!":"Era "+PRET[it.k].n+":"}</b> ${PRET[it.k].u} <span class="muted">(modelo: <i>${PRET[it.k].f}</i>)</span>`;
+   $("#pExp").classList.add("show");$("#pNext").classList.add("show");
+   pAns++;if(ok)pCor++;$("#pScore").textContent=`${pCor} / ${pAns}`;
+  };
+  opts.appendChild(btn);
+ });
+}
+$("#pNext").onclick=()=>{pi=(pi+1)%PITEMS.length;renderP();};
+renderP();
+
+/* ============ SCROLL-REVEAL 3D CARD ============ */
+(function(){
+ const cont=$("#cscroll"),card=$("#csCard"),header=$("#csHeader");
+ if(!cont||!card||!header)return;
+ if(matchMedia("(prefers-reduced-motion: reduce)").matches){card.style.transform="rotateX(0deg) scale(1)";return;}
+ let mob=innerWidth<=768;const lerp=(a,b,t)=>a+(b-a)*t;let ticking=false;
+ function update(){
+  ticking=false;
+  const r=cont.getBoundingClientRect(),wh=innerHeight;
+  let p=(wh-r.top)/(wh+r.height);p=Math.max(0,Math.min(1,p));
+  const rot=20*(1-p),sc=mob?lerp(0.7,0.9,p):lerp(1.05,1,p),tr=-100*p;
+  card.style.transform="rotateX("+rot.toFixed(2)+"deg) scale("+sc.toFixed(3)+")";
+  header.style.transform="translateY("+tr.toFixed(1)+"px)";
+ }
+ addEventListener("scroll",()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+ addEventListener("resize",()=>{mob=innerWidth<=768;update();});
+ update();
+})();
+
+/* ============ scrollspy + reveal ============ */
+const links=$$(".nav-links a"),secs=$$("section");
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+id));}}),
+ {rootMargin:"-45% 0px -50% 0px"}).observe&&secs.forEach(s=>{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+id));}}),{rootMargin:"-45% 0px -50% 0px"});o.observe(s);});
+const rev=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rev.unobserve(e.target);}}),{threshold:.12});
+$$(".reveal").forEach(el=>rev.observe(el));
+</script>
+</body>
+</html>
